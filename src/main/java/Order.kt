@@ -1,4 +1,3 @@
-package Pedido
 
 
 import Resto.Provider
@@ -9,7 +8,7 @@ import java.time.LocalDate
 
 class Order (var code: Int, var date: LocalDate, var user: ClientUser, var provider: Provider,
              var listMennus: MutableList<Menu>, var state: String, var payment: String,
-             var ubication: Pair<Double, Double>) {
+             var ubication: Ubicacion) {
 
     val geoCalculator = GeoCalculator
 
@@ -17,9 +16,9 @@ class Order (var code: Int, var date: LocalDate, var user: ClientUser, var provi
         return listMennus.isNotEmpty()
     }
 
-    fun restoValidation(): Boolean {
-        return geoCalculator.distance(provider.ubication, user.ubication) <= 20
-    }
+/*    fun restoValidation(): Boolean {
+        return provider.ubication.distancia(user.ubication) <= 20
+    }*/
 
 
 }

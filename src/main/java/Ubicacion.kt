@@ -1,5 +1,3 @@
-package Resto
-
 class Ubicacion {
 
 }

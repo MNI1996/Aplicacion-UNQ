@@ -1,10 +1,14 @@
 package main.java
 
+import Categoria
+import Duracion
+import Horarios
+import Promocion
 import java.sql.Time
 
 
-class Menu (var name: String, var description: String,var categoria: Categoria,var valorDelivery: Int,var durdacionMenu: Duracion,
-            var horarios: Horarios,var tiempoEspera: Time,var precio: Double,var primeraPromocion: Promocion,var segundaPromocion:Promocion ?,
+class Menu (var name: String, var description: String, var categoria: Categoria, var valorDelivery: Int, var durdacionMenu: Duracion,
+            var horarios: Horarios, var tiempoEspera: Time, var precio: Double, var primeraPromocion: Promocion, var segundaPromocion: Promocion?,
             var stock:Int, var enabled: Boolean) {
 
     fun calculatedPrice(cantidad: Int): Double {

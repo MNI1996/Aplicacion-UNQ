@@ -1,18 +1,18 @@
 package main.java
 
-import Pedido.Order
+import Order
 import Resto.Provider
 import java.time.LocalDate
 
 class ClientUser (var name: String, password: String, var mail: String,var telefono: Int, var localidad: String,var direccion: String, var history: MutableList<Order> ) {
 
 
-    fun doOrder(resto: Provider, listMennu: MutableList<Menu>, payment: String){
-        var newOrder = Order(resto.giveNewCodeOrder(), LocalDate.now(), this, resto, listMennu, "Pendiente", payment, resto.ubication)
+    fun doOrder(provedor: Provider, listMennu: MutableList<Menu>, payment: String){
+        var newOrder = Order(provedor.giveNewCodeOrder(), LocalDate.now(), this, provedor, listMennu, "Pendiente", payment, provedor.ubication)
 
         if(newOrder.mennuesValidation()){
             addOrder(newOrder)
-            resto.menus.removeAll(listMennu)//el resto siempre va a tener stock (ver enunciado)
+            provedor.menus.removeAll(listMennu)//el resto siempre va a tener stock (ver enunciado)
         } else{
             throw Exception("El pedido realizado es invalido")
         }
