@@ -5,3 +5,4 @@ branches:
 jdk:
   - oraclejdk8
 sudo: True
+dist: trusty
