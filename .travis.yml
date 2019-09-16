@@ -1,2 +1,5 @@
-Lenguaje: kotlin
+Lenguaje: java
+branches:
+  only:
+    - master
 jdk: oraclejdk8
