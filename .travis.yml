@@ -4,3 +4,4 @@ branches:
     - master
 jdk:
   - oraclejdk8
+sudo: required
