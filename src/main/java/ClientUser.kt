@@ -1,13 +1,15 @@
 package main.java
 
-import Order
+import main.java.Order
 import Resto.Provider
 import java.time.LocalDate
 
-class ClientUser (var name: String, password: String, var mail: String,var telefono: Int, var localidad: String,var direccion: String, var history: MutableList<Order> ) {
+class ClientUser (var name: String, password: String, var mail: String,var telefono: Int,
+                  var localidad: String,var direccion: String ) {
+    var saldo=0.00
+    var history= emptyList<Order>().toMutableList()
 
-
-    fun doOrder(provedor: Provider, listMennu: MutableList<Menu>, payment: String){
+    /*fun doOrder(provedor: Provider, listMennu: MutableList<Menu>, payment: String){
         var newOrder = Order(provedor.giveNewCodeOrder(), LocalDate.now(), this, provedor, listMennu, "Pendiente", payment, provedor.ubication)
 
         if(newOrder.mennuesValidation()){
@@ -16,7 +18,7 @@ class ClientUser (var name: String, password: String, var mail: String,var telef
         } else{
             throw Exception("El pedido realizado es invalido")
         }
-    }
+    }*/
 
     fun addOrder(order: Order){
         //se annade independientemente del estado del pedido
@@ -31,6 +33,10 @@ class ClientUser (var name: String, password: String, var mail: String,var telef
             throw Exception("Su pedido no puede ser cancelado ya que el estado de su pedido es ${order.state}")
         }
 
+    }
+
+    fun recargar(i: Double) {
+        saldo += i
     }
 
 }

@@ -2,11 +2,13 @@ package main.java
 
 
 import Resto.Provider
+import java.time.LocalDate
 
 
-class AppModel(var providers: MutableList<Provider>,
-               var clientsUsers: MutableList<ClientUser>) {
+class AppModel() {
 
+    var providers=emptyList<Provider>().toMutableList()
+    var clientsUsers=emptyList<ClientUser>().toMutableList()
     var user : String=""
     var pass : String=""
 
@@ -21,31 +23,24 @@ class AppModel(var providers: MutableList<Provider>,
     }
 
     fun signUpProvider(provider: Provider){//hay que terminar de modificarlo
-        if(!existsProvier(provider)){
+        if(!existsProvider(provider)){
             providers.add(provider)
         }
         else {
-            throw Exception("El provedor ${provider.name} ya esta registrado")
+            throw Exception("El provedor ${provider.name} ya esta registrado en la localidad ${provider.localidad}")
         }
     }
 
-    fun existsProvier(newProvider: Provider): Boolean{
-        return providers.any { provider -> provider.name == newProvider.name }
+    fun existsProvider(newProvider: Provider): Boolean{
+        return providers.filter { provider -> provider.name == newProvider.name }.isNotEmpty()
     }
 
 
     fun existsUser(user: ClientUser): Boolean {
-        return providers.filter { u -> u.name == user.name }.isNotEmpty()
+        return clientsUsers.filter { u -> u.name == user.name }.isNotEmpty()
     }
 
-/*    fun signUpResto(provider: Provider){
-        if (providers.filter { r -> r == provider.code }.isEmpty()){
-            restaurants.add(provider)
-        }
-        else{
-            throw Exception("El restaurant ${provider.name} en la localidad ${provider.locality} ya existe en el sistema")
-        }
-    }*/
+
 
     fun searchProviderByName(name: String): List<Provider>{
         return providers.filter{r -> r.name == name}
@@ -67,6 +62,42 @@ class AppModel(var providers: MutableList<Provider>,
             }            
         }
         return list
+    }
+
+    fun generateOrder(menuList:MutableList<Pair<Int,Menu>>, user: ClientUser,provider:Provider) {
+        if (validBuy(provider,menuList))
+        {
+            var newOrder= Order(LocalDate.now(),user,
+                   provider,generarListado(menuList),"En camino"
+                    ,montoFInal(menuList))
+            user.history.add(newOrder)
+            user.saldo -= newOrder.precioTotal
+        }
+    }
+
+    private fun generarListado(menuList: MutableList<Pair<Int, Menu>>): MutableList<Menu> {
+        var listaFinal= emptyList<Menu>().toMutableList()
+       menuList.map{m -> listaFinal.addAll(generateSLM(m))}
+        return listaFinal
+    }
+
+    private fun generateSLM(m: Pair<Int, Menu>): MutableList<Menu> {
+        var ls = emptyList<Menu>().toMutableList()
+        for (i in 1..m.first)
+        {
+            ls.add(m.second)
+        }
+        return ls
+    }
+
+    private fun validBuy(provider: Provider, menuList: MutableList<Pair<Int,Menu>>): Boolean {
+         return (menuList.all { m -> provider.containsMenu(m.second.name) && m.second.stock >m.first  })
+    }
+
+    private fun montoFInal(menuList: MutableList<Pair<Int,Menu>>): Double {
+
+        var listaDePrecioFinal= menuList.map{m -> m.second.calculatedPrice(m.first)}
+        return listaDePrecioFinal.sum()
     }
 
 

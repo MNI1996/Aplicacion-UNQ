@@ -1,4 +1,6 @@
 package main.java
-class Horarios {
+
+class Posicion {
+
 
 }
