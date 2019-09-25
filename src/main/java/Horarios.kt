@@ -1,4 +1,4 @@
 package main.java
-class Horarios {
-
+enum class Horarios {
+    Morning,Afternoon,Night
 }

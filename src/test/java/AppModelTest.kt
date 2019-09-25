@@ -1,9 +1,8 @@
 package main.java
 
-import Resto.Provider
 import junit.framework.Assert.assertEquals
 import org.junit.Test
-import java.sql.Time
+
 import kotlin.test.assertFails
 
 class AppModelTest{
@@ -32,7 +31,7 @@ class AppModelTest{
         var app= AppModel()
         var prov =Provider("el Buen Comer","url","Quilmes", Posicion(),
                 "add","servicio de comidas"
-                ,null,"sdhad@gmail.com",45434542, Horarios(),
+                ,null,"sdhad@gmail.com",45434542, mutableListOf(Horarios.Morning,Horarios.Afternoon),
                 mutableListOf(DiasDeSemana.Lunes,DiasDeSemana.Martes,DiasDeSemana.Miercoles,
                         DiasDeSemana.Jueves,DiasDeSemana.Viernes),20)
         app.signUpProvider(prov)
@@ -44,12 +43,13 @@ class AppModelTest{
         var app= AppModel()
         var prov =Provider("el Buen Comer","url","Quilmes", Posicion(),
                 "add","servicio de comidas"
-                ,null,"sdhad@gmail.com",45434542, Horarios(),
+                ,null,"sdhad@gmail.com",45434542, mutableListOf(Horarios.Morning,Horarios.Afternoon),
                 mutableListOf(DiasDeSemana.Lunes,DiasDeSemana.Martes,DiasDeSemana.Miercoles,
                         DiasDeSemana.Jueves,DiasDeSemana.Viernes),20)
         var prov2 =Provider("el Buen Comer","url","Quilmes", Posicion(),
                 "add","servicio de comidas"
-                ,null,"sdhad@gmail.com",45434542, Horarios(),
+                ,null,"sdhad@gmail.com",45434542
+                , mutableListOf(Horarios.Morning,Horarios.Afternoon),
                 mutableListOf(DiasDeSemana.Lunes,DiasDeSemana.Martes,DiasDeSemana.Miercoles,
                         DiasDeSemana.Jueves,DiasDeSemana.Viernes),20)
         app.signUpProvider(prov)
@@ -61,17 +61,19 @@ class AppModelTest{
 
     @Test
     fun generoUnaOrdenExitosa(){
-
+var lapsus= TimeLapsus(10, MedidorDelLapso.Minutes)
         var app= AppModel()
         var user= ClientUser("marcos","anhur","jkhjkhk@yahoo.com.ar",
                 1138921839,"Bernal","comodoro Rivadavia")
         var provider=Provider("el Buen Comer","url","Quilmes", Posicion(),
                 "add","servicio de comidas"
-                ,null,"sdhad@gmail.com",45434542, Horarios(),
+                ,null,"sdhad@gmail.com",45434542, mutableListOf(Horarios.Morning,Horarios.Night),
                 mutableListOf(DiasDeSemana.Lunes,DiasDeSemana.Martes,DiasDeSemana.Miercoles,
                         DiasDeSemana.Jueves,DiasDeSemana.Viernes),20)
-        var menu= Menu("arroz","arroz blanco",Categoria.Vegano
-                        ,10, Duracion(),Horarios(), Time(10),50.00
+        var menu= Menu("arroz","arroz blancooooooooooooooo",Categoria.Vegano
+                        ,10, Duracion(2,MedidorDelLapso.Hours),Horarios.Morning
+                        ,lapsus
+                        ,50.00
                         , Promocion(3,30.00),null
                         ,100,true)
         app.signUpProvider(provider)
@@ -80,6 +82,10 @@ class AppModelTest{
         user.recargar(100.00)
         app.generateOrder(mutableListOf(Pair(3,menu)),user,provider)
         assertEquals(0.00,user.saldo)
+
+
+    }
+
 
 
     }

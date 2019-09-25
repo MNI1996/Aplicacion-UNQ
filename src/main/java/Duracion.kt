@@ -1,5 +1,6 @@
 package main.java
 
-class Duracion {
+class Duracion (var unidad:Int , var tiempo: MedidorDelLapso) {
+
 
 }
