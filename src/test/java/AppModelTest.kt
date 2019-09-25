@@ -89,4 +89,3 @@ var lapsus= TimeLapsus(10, MedidorDelLapso.Minutes)
 
 
     }
-}
