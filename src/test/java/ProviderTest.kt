@@ -5,7 +5,7 @@ import org.junit.Test
 import java.sql.Time
 
 class ProviderTest{
-    @Test
+    /*@Test
     fun registroMenuExitoso(){
         var prov =Provider("el Buen Comer","url","Quilmes", Posicion(),
                 "add","servicio de comidas"
@@ -18,9 +18,7 @@ class ProviderTest{
                 ,100,true)
 
         assertEquals(1,prov.addMenu(menu))
-
-
-    }
+    }*/
     @Test
     fun registroMenuFallido(){
 

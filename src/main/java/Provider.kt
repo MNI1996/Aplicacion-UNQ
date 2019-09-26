@@ -8,25 +8,28 @@ class Provider(var name: String, var logo :String, var localidad:String
                , var telefono:Int, var horariosDeSemana: MutableList<Horarios>
                , var diasDeAtencion: MutableList<DiasDeSemana>, var rangoEntrega:Int )
 {
-    var categorias= mutableListOf<String>("Pizza,Cerveza,Hamburguesa,Sushi,Empanadas,Green,Vegano")
+    var categorias= mutableListOf<String>("Pizza","Cerveza","Hamburguesa","Sushi","Empanadas","Green","Vegano")
     var menus= emptyList<Menu>().toMutableList()
+    
     fun addMenu (menu: Menu){
-        if(isValidM(menu)){menus.add(menu)}
+        var wat = isValidM(menu)
+        if(wat){menus.add(menu)}
         else{throw Exception ("el menu no cumple con los requerimientos minimos de aceptacion")}
 
     }
 
     private fun isValidM(menu: Menu): Boolean {
-        return(menu.name.length>=4&&menu.description.length>=20
+        return(menu.precio.toInt() != 0
+                && menu.primeraPromocion.cantidadMinima >=10
+                && menu.primeraPromocion.cantidadMinima <=70
+                && menu.name.length>=4
+                && menu.description.length>=20
                 && menu.description.length<=40
-                && categorias.contains(menu.categoria.name.toString())
-                && menu.valorDelivery>=10 && menu.valorDelivery<=40
+                && menu.valorDelivery>=10
+                && menu.valorDelivery<=40
                 && menu.tiempoEspera !=null
-                && menu.precio.toInt() != 0
-                && menu.primeraPromocion.cantidadMinima <=10
-                && menu.primeraPromocion.cantidadMinima >=70
-                && menu.stock != null)
-
+                && menu.stock != null
+                && categorias.contains(menu.categoria.name))
     }
 
 

@@ -72,14 +72,12 @@ var lapsus= TimeLapsus(10, MedidorDelLapso.Minutes)
                         DiasDeSemana.Jueves,DiasDeSemana.Viernes),20)
         var menu= Menu("arroz","arroz blancooooooooooooooo",Categoria.Vegano
                         ,10, Duracion(2,MedidorDelLapso.Hours),Horarios.Morning
-                        ,lapsus
-                        ,50.00
-                        , Promocion(3,30.00),null
-                        ,100,true)
+                        ,lapsus ,50.00 , Promocion(11,30.00)
+                        ,null,100,true)
         app.signUpProvider(provider)
         app.signUpClientUser(user)
         provider.addMenu(menu)
-        user.recargar(100.00)
+        user.recargar(160.00)
         app.generateOrder(mutableListOf(Pair(3,menu)),user,provider)
         assertEquals(0.00,user.saldo)
 
