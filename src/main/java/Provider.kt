@@ -10,7 +10,7 @@ class Provider(var name: String, var logo :String, var localidad:String
 {
     var categorias= mutableListOf<String>("Pizza","Cerveza","Hamburguesa","Sushi","Empanadas","Green","Vegano")
     var menus= emptyList<Menu>().toMutableList()
-    
+
     fun addMenu (menu: Menu){
         var wat = isValidM(menu)
         if(wat){menus.add(menu)}
