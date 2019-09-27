@@ -40,10 +40,6 @@ class Provider(var name: String, var logo :String, var localidad:String
         return menus.filter { m-> m.name.toUpperCase().contains(nameMenu.toUpperCase())}[0]
     }
 
-    fun giveNewCodeOrder(): Int {
-        return Math.random().toInt()//esto es misible
-    }
-
     fun deleteMennu(menu: Menu){
         if (menu.itsOver())
             { menus.remove(getMenuByName(menu.name))}

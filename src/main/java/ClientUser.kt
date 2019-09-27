@@ -22,16 +22,6 @@ class ClientUser (var name: String, password: String, var mail: String,var telef
         history.add(order)
     }
 
-    fun cancelOrder(order: Order){
-        //Prec.: order debe ser una orden hecha por this (order debe estar en el historial)
-        if (order.state.toUpperCase() != "ENTREGADO" ){
-            history.filter { o -> o.code == order.code }[0].state = "Cancelado"
-        } else{
-            throw Exception("Su pedido no puede ser cancelado ya que el estado de su pedido es ${order.state}")
-        }
-
-    }
-
     fun recargar(i: Double) {
         saldo += i
     }
