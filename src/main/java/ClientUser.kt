@@ -1,7 +1,4 @@
-package main.java
 
-import main.java.Order
-import main.java.Provider
 import java.time.LocalDate
 
 class ClientUser (var name: String, password: String, var mail: String,var telefono: Int,

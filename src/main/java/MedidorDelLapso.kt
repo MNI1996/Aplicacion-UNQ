@@ -1,5 +1,3 @@
-package main.java
-
 
 enum class MedidorDelLapso
 {

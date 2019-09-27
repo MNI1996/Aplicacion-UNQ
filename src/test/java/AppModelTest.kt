@@ -1,8 +1,7 @@
-package main.java
 
 import junit.framework.Assert.assertEquals
 import org.junit.Test
-
+import java.time.LocalDate
 import kotlin.test.assertFails
 
 class AppModelTest{
@@ -71,7 +70,7 @@ var lapsus= TimeLapsus(10, MedidorDelLapso.Minutes)
                 mutableListOf(DiasDeSemana.Lunes,DiasDeSemana.Martes,DiasDeSemana.Miercoles,
                         DiasDeSemana.Jueves,DiasDeSemana.Viernes),20)
         var menu= Menu("arroz","arroz blancooooooooooooooo",Categoria.Vegano
-                        ,10, Duracion(2,MedidorDelLapso.Hours),Horarios.Morning
+                        ,10, Fecha(28,9,2019),Horarios.Morning
                         ,lapsus ,50.00 , Promocion(11,30.00)
                         ,null,100,true)
         app.signUpProvider(provider)

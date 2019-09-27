@@ -1,5 +1,3 @@
-package main.java
-
 
 
 class Provider(var name: String, var logo :String, var localidad:String
@@ -38,7 +36,7 @@ class Provider(var name: String, var logo :String, var localidad:String
     }
 
     fun getMenuByName(nameMenu: String): Menu {
-        //Prec.: el menu llamado nameMenu, existe en la lista mennues del Resto
+        //Prec.: el menu llamado nameMenu, existe en la lista menues del Provider
         return menus.filter { m-> m.name.toUpperCase().contains(nameMenu.toUpperCase())}[0]
     }
 
@@ -46,8 +44,10 @@ class Provider(var name: String, var logo :String, var localidad:String
         return Math.random().toInt()//esto es misible
     }
 
-    fun deleteMennu(mennu: Menu){
-        menus.remove(getMenuByName(mennu.name))
+    fun deleteMennu(menu: Menu){
+        if (menu.itsOver())
+            { menus.remove(getMenuByName(menu.name))}
+
     }
 
 }

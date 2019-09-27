@@ -1,12 +1,5 @@
-package main.java
 
-
-
-import main.java.Provider
-import main.java.Menu
-import main.java.ClientUser
 import main.java.GeoCalculator
-import main.java.Posicion
 import java.time.LocalDate
 
 class Order ( var date: LocalDate, var user: ClientUser, var provider: Provider,
