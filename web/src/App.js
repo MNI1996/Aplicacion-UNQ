@@ -1,19 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-//import Mapa from './mapa.js';
+import HeaderBar from './HeaderBar.js';
+import Favicon from './Favicon.js';
+import Mapa from './mapa'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div>
-        </div>
-      </header>
+    <div>
+        <head  className="App">
+          <Favicon />
+        </head>
+        <body>
+          <HeaderBar />
+          <Mapa />
+        </body>  
     </div>
   );
 }
