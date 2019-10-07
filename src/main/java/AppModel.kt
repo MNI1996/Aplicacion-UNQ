@@ -62,13 +62,19 @@ class AppModel() {
     }
 
     fun generateOrder(menuList:MutableList<Pair<Int,Menu>>, user: ClientUser,provider:Provider) {
-        if (validBuy(provider,menuList))
+       var precioAPagar=montoFinal(menuList)
+        if (validBuy(provider,menuList) && precioAPagar <= user.saldo)
         {
-            var newOrder= Order(LocalDate.now(),user,
+            var newOrder= Order(LocalDate.now(),user.name,
                    provider,generarListado(menuList),"En camino"
-                    ,montoFInal(menuList))
+                    ,precioAPagar)
             user.history.add(newOrder)
+            provider.history.add(newOrder)
             user.saldo -= newOrder.precioTotal
+        }
+        else
+        {
+            throw Exception("Algo ha salido mal, revise que posea saldo suficiente y su compra")
         }
     }
 
@@ -91,7 +97,7 @@ class AppModel() {
          return (menuList.all { m -> provider.containsMenu(m.second.name) && m.second.stock >m.first  })
     }
 
-    private fun montoFInal(menuList: MutableList<Pair<Int,Menu>>): Double {
+    private fun montoFinal(menuList: MutableList<Pair<Int,Menu>>): Double {
 
         var listaDePrecioFinal= menuList.map{m -> m.second.calculatedPrice(m.first)}
         return listaDePrecioFinal.sum()

@@ -2,7 +2,7 @@
 import main.java.GeoCalculator
 import java.time.LocalDate
 
-class Order ( var date: LocalDate, var user: ClientUser, var provider: Provider,
+class Order ( var date: LocalDate, var user: String, var provider: Provider,
              var listMennus: MutableList<Menu>, var state: String, var precioTotal: Double
              ) {
     var code= Math.random()

@@ -4,7 +4,9 @@ import org.junit.Test
 
 class ClientUserTest {
     @Test
-    fun ordenoUnMenuValido(){}
+    fun ordenoUnMenuValido(){
+
+    }
 
     @Test
     fun ordenoUnMenuInvalido(){}

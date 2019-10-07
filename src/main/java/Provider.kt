@@ -8,7 +8,7 @@ class Provider(var name: String, var logo :String, var localidad:String
 {
     var categorias= mutableListOf<String>("Pizza","Cerveza","Hamburguesa","Sushi","Empanadas","Green","Vegano")
     var menus= emptyList<Menu>().toMutableList()
-
+    var history= emptyList<Order>().toMutableList()
     fun addMenu (menu: Menu){
         var wat = isValidM(menu)
         if(wat){menus.add(menu)}
@@ -25,9 +25,11 @@ class Provider(var name: String, var logo :String, var localidad:String
                 && menu.description.length<=40
                 && menu.valorDelivery>=10
                 && menu.valorDelivery<=40
-                && menu.tiempoEspera !=null
-                && menu.stock != null
-                && categorias.contains(menu.categoria.name))
+                && menu.stock != 0
+                && categorias.contains(menu.categoria.name)
+                && !(menu.itsOver())
+                )
+
     }
 
 
