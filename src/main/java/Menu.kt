@@ -1,4 +1,6 @@
 
+import Enums.Categoria
+import Enums.Horarios
 import java.time.LocalDate
 
 
