@@ -1,9 +1,16 @@
 
 import junit.framework.Assert.assertEquals
 import org.junit.Test
+import org.springframework.context.ApplicationContext
+import org.springframework.context.annotation.AnnotationConfigApplicationContext
+import org.springframework.context.annotation.ComponentScan
+import org.springframework.context.annotation.Configuration
 import java.time.LocalDate
 import kotlin.test.assertFails
+import org.springframework.context.annotation.AnnotationConfigApplicationContext as AnnotationConfigApplicationContext1
 
+@Configuration
+@ComponentScan("*","*")
 class AppModelTest{
 
     @Test
@@ -28,7 +35,7 @@ class AppModelTest{
     @Test
     fun registroProveedorExitoso(){
         var app= AppModel()
-        var prov =Provider("el Buen Comer","url","Quilmes", Posicion(),
+        var prov =Provider("el Buen Comer","url","Quilmes", Posicion(/*13443.00,1339.00*/),
                 "add","servicio de comidas"
                 ,null,"sdhad@gmail.com",45434542, mutableListOf(Horarios.Morning,Horarios.Afternoon),
                 mutableListOf(DiasDeSemana.Lunes,DiasDeSemana.Martes,DiasDeSemana.Miercoles,
@@ -40,12 +47,12 @@ class AppModelTest{
     @Test
     fun registroProveedorFallido(){
         var app= AppModel()
-        var prov =Provider("el Buen Comer","url","Quilmes", Posicion(),
+        var prov =Provider("el Buen Comer","url","Quilmes", Posicion(/*343.00,45.00*/),
                 "add","servicio de comidas"
                 ,null,"sdhad@gmail.com",45434542, mutableListOf(Horarios.Morning,Horarios.Afternoon),
                 mutableListOf(DiasDeSemana.Lunes,DiasDeSemana.Martes,DiasDeSemana.Miercoles,
                         DiasDeSemana.Jueves,DiasDeSemana.Viernes),20)
-        var prov2 =Provider("el Buen Comer","url","Quilmes", Posicion(),
+        var prov2 =Provider("el Buen Comer","url","Quilmes", Posicion(/*12332.00,1313.00*/),
                 "add","servicio de comidas"
                 ,null,"sdhad@gmail.com",45434542
                 , mutableListOf(Horarios.Morning,Horarios.Afternoon),
@@ -64,7 +71,7 @@ var lapsus= TimeLapsus(10, MedidorDelLapso.Minutes)
         var app= AppModel()
         var user= ClientUser("marcos","anhur","jkhjkhk@yahoo.com.ar",
                 1138921839,"Bernal","comodoro Rivadavia")
-        var provider=Provider("el Buen Comer","url","Quilmes", Posicion(),
+        var provider=Provider("el Buen Comer","url","Quilmes", Posicion(/*13.00,134141.00*/),
                 "add","servicio de comidas"
                 ,null,"sdhad@gmail.com",45434542, mutableListOf(Horarios.Morning,Horarios.Night),
                 mutableListOf(DiasDeSemana.Lunes,DiasDeSemana.Martes,DiasDeSemana.Miercoles,
@@ -90,7 +97,7 @@ var lapsus= TimeLapsus(10, MedidorDelLapso.Minutes)
         var app= AppModel()
         var user= ClientUser("marcos","anhur","jkhjkhk@yahoo.com.ar",
                 1138921839,"Bernal","comodoro Rivadavia")
-        var provider=Provider("el Buen Comer","url","Quilmes", Posicion(),
+        var provider=Provider("el Buen Comer","url","Quilmes", Posicion(/*4313.00,1310.00*/),
                 "add","servicio de comidas"
                 ,null,"sdhad@gmail.com",45434542, mutableListOf(Horarios.Morning,Horarios.Night),
                 mutableListOf(DiasDeSemana.Lunes,DiasDeSemana.Martes,DiasDeSemana.Miercoles,
@@ -108,6 +115,15 @@ var lapsus= TimeLapsus(10, MedidorDelLapso.Minutes)
 
 
 
+    }
+
+    @Test
+    fun pruebaDeAspecto(){
+
+        var ctx : ApplicationContext = AnnotationConfigApplicationContext()
+
+        var ps = ctx.getBean(AppModel::class.java)
+        ps.searchProviderByName("holi")
     }
 
 

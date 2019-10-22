@@ -1,7 +1,8 @@
 
+import org.springframework.stereotype.Component
 import java.time.LocalDate
 
-
+@Component
 class AppModel() {
 
     var providers=emptyList<Provider>().toMutableList()
