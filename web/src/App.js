@@ -1,20 +1,21 @@
-import React from 'react';
-import HeaderBar from './HeaderBar.js';
-import Favicon from './Favicon.js';
-import Mapa from './mapa'
-import './App.css';
+import React, { Suspense } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import './css/App.css';
+
+
+import LogIn from './componentes/login'
+import Home from './componentes/Home'
 
 function App() {
   return (
-    <div>
-        <head  className="App">
-          <Favicon />
-        </head>
-        <body>
-          <HeaderBar />
-          <Mapa />
-        </body>  
-    </div>
+    <BrowserRouter>
+      <Suspense fallback={LogIn}>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/Lenguaje" component={LogIn}/>
+          </Switch>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 

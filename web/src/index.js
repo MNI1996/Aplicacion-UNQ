@@ -3,7 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { IntlProvider } from 'react-intl';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+import mensajesEn from './Translaciones/en.json'
+import mensajesEs from './Translaciones/es.json'
+
+const lenguaje = {
+    'en': mensajesEn ,
+    'es': mensajesEs
+}
+
+const navegadorLengusje = navigator.language.split(/[-_]/)[0]
+
+//menu con loing y registrar
+//registrar usuarios cliente
+//login -> provedores y cliente
+//menu de busqueda
+//pagina de compra
+//menu de provedor
+//crear menu
+
+ReactDOM.render(<IntlProvider locale={navegadorLengusje} messages={lenguaje[navegadorLengusje]}>
+                    <App />
+                </IntlProvider>
+                , document.getElementById('root'));
+
 
 serviceWorker.unregister();
