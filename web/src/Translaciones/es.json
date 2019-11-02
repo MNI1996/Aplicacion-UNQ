@@ -1,3 +1,9 @@
 {
-    "Saludos": "hola"
+    "Saludos": "hola",
+    "Register": "Registro",
+    "Viandas": "Viandas",
+    "Ingreso": "Ingreso",
+    "Bienvenidos":"Bienvenidos",
+    "Usuario": "Usuario",
+    "Contraseña": "Contraseña"
 }

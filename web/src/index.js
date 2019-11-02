@@ -11,7 +11,7 @@ import mensajesEs from './Translaciones/es.json'
 
 const lenguaje = {
     'en': mensajesEn ,
-    'es': mensajesEs
+    'es': mensajesEs ,
 }
 
 const navegadorLengusje = navigator.language.split(/[-_]/)[0]

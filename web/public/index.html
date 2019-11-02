@@ -5,12 +5,7 @@
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <!-- here maps dependencias    -->
-    <link href="https://js.api.here.com/v3/3.0/mapsjs-ui.css" rel="stylesheet">
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -41,10 +36,22 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  <!-- here -->
+  <!-- here maps dependencias    -->
+  <link href="https://js.api.here.com/v3/3.0/mapsjs-ui.css" rel="stylesheet">
+  <meta
+    name="description"
+    content="Web site created using create-react-app"
+  />
   <script src="https://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script> 
   <script src="https://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script> 
   <script src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script> 
   <script src="https://js.api.here.com/v3/3.0/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script> 
+  
+  <!-- bing maps dependencias    -->
+  <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=[Your_Bing_Maps_Key]' async defer></script>
+  <reference path="types/MicrosoftMaps/CustomMapStyles.d.ts" />
+  <reference path="types/MicrosoftMaps/Microsoft.Maps.d.ts" />
+  <reference path="types/MicrosoftMaps/Microsoft.Maps.All.d.ts" />
+
   </body>
 </html>

@@ -1,7 +1,15 @@
+html {
+  background: #95a5a6;
+  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_embroidery.png);
+  }
+
+  
+body{
+ margin: 20px 0px 20px 0px; 
+}
 .App {
   text-align: center;
 }
-
 
 .header {
   overflow: hidden;
@@ -34,14 +42,4 @@
   padding: 15px;
 }
 
-.Login {
-  width: 400px;
-  height: 200px;
-  padding: 20px;
-}
-
-.Login form {
-  margin: 0 auto;
-  max-width: 320px;
-}
 
