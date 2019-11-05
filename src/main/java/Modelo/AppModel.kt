@@ -1,4 +1,8 @@
-
+package Modelo
+import ClientUser
+import Menu
+import Order
+import Provider
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 
@@ -62,13 +66,13 @@ class AppModel() {
         return list
     }
 
-    fun generateOrder(menuList:MutableList<Pair<Int,Menu>>, user: ClientUser,provider:Provider) {
+    fun generateOrder(menuList:MutableList<Pair<Int, Menu>>, user: ClientUser, provider: Provider) {
        var precioAPagar=montoFinal(menuList)
         if (validBuy(provider,menuList) && precioAPagar <= user.saldo)
         {
-            var newOrder= Order(LocalDate.now(),user.name,
-                   provider,generarListado(menuList),"En camino"
-                    ,precioAPagar)
+            var newOrder= Order(LocalDate.now(), user.name,
+                    provider, generarListado(menuList), "En camino"
+                    , precioAPagar)
             user.history.add(newOrder)
             provider.history.add(newOrder)
             user.saldo -= newOrder.precioTotal
@@ -94,11 +98,11 @@ class AppModel() {
         return ls
     }
 
-    private fun validBuy(provider: Provider, menuList: MutableList<Pair<Int,Menu>>): Boolean {
+    private fun validBuy(provider: Provider, menuList: MutableList<Pair<Int, Menu>>): Boolean {
          return (menuList.all { m -> provider.containsMenu(m.second.name) && m.second.stock >m.first  })
     }
 
-    private fun montoFinal(menuList: MutableList<Pair<Int,Menu>>): Double {
+    private fun montoFinal(menuList: MutableList<Pair<Int, Menu>>): Double {
 
         var listaDePrecioFinal= menuList.map{m -> m.second.calculatedPrice(m.first)}
         return listaDePrecioFinal.sum()

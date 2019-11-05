@@ -1,8 +1,9 @@
-
+import Modelo.Enums.DiasDeSemana
+import Modelo.Enums.Horarios
 
 class Provider(var name: String, var logo :String, var localidad:String
                , var ubication: Posicion, var direccion:String
-               ,var descripcionService:String, var webSite:String?, var mail:String
+               , var descripcionService:String, var webSite:String?, var mail:String
                , var telefono:Int, var horariosDeSemana: MutableList<Horarios>
                , var diasDeAtencion: MutableList<DiasDeSemana>, var rangoEntrega:Int )
 {

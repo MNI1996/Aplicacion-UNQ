@@ -1,17 +1,19 @@
-package App
+package Modelo.Api
 
-import Dispachers.DispacherMenu
-import org.springframework.stereotype.Repository
+import Modelo.Dispachers.DispacherMenu
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
 @RequestMapping("/Menu")
-class ApiMenu(val menus: DispacherMenu){
+class ApiMenu(){
+    @Autowired
+    lateinit var menus: DispacherMenu
 
     @RequestMapping("/main")
-    fun main():String {
+    fun jose():String {
         return "String ja";
     }
 
