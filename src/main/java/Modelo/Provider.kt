@@ -1,5 +1,7 @@
 import Modelo.Enums.DiasDeSemana
 import Modelo.Enums.Horarios
+import Modelo.Menu
+
 
 class Provider(var name: String, var logo :String, var localidad:String
                , var ubication: Posicion, var direccion:String

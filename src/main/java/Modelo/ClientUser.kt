@@ -1,5 +1,7 @@
 
 import Modelo.AppModel
+import Modelo.Menu
+
 class ClientUser (var name: String, password: String, var mail: String,var telefono: Int,
                   var localidad: String,var direccion: String ) {
     var saldo=0.00

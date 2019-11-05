@@ -1,49 +1,48 @@
+package Modelo
 
-
+import Fecha
 import Modelo.Enums.Categoria
 import Modelo.Enums.Horarios
-import Modelo.Enums.MedidorDelLapso
-import jdk.nashorn.internal.ir.annotations.Ignore
+import Promocion
+import TimeLapsus
 import java.time.LocalDate
 import javax.persistence.*
-import javax.validation.constraints.Null
-import kotlin.jvm.Transient
 
-
-//@Enumerated(STRING)
-
+@Entity
 class Menu (
-        var name: String="",
+        var name: String,
 
-        var description: String="",
-
-        @Enumerated(EnumType.STRING)
-        var categoria: Categoria=Categoria.Cerveza,
-
-        var valorDelivery: Int=0,
-
-        @Transient
-        var duracionMenu: Fecha=Fecha(12,12,12),
+        var description: String,
 
         @Enumerated(EnumType.STRING)
-        var horarios: Horarios=Horarios.Afternoon,
+        var categoria: Categoria,
+
+        var valorDelivery: Int,
 
         @Transient
-        var tiempoEspera: TimeLapsus=TimeLapsus(12,MedidorDelLapso.Minutes),
+        var duracionMenu: Fecha,
+
+        @Enumerated(EnumType.STRING)
+        var horarios: Horarios,
+
+        @Transient
+        var tiempoEspera: TimeLapsus,
 
         var precio: Double=0.0,
 
         @Transient
-        var primeraPromocion: Promocion=Promocion(1,0.0),
+        var primeraPromocion: Promocion,
 
         @Transient
-        var segundaPromocion: Promocion?=null,
+        var segundaPromocion: Promocion?,
 
-        var stock:Int=0,
+        var stock:Int,
 
-        var enabled: Boolean=true
-           ) {
-    @Id @GeneratedValue(strategy=GenerationType.AUTO)
+        @Transient
+        var enabled: Boolean
+        ) {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     var id:Long = 0
 
     fun calculatedPrice(cantidad: Int): Double {
@@ -57,7 +56,7 @@ class Menu (
     }
 
     fun itsOver():Boolean{
-        var hoy=LocalDate.now()
+        var hoy= LocalDate.now()
        return( hoy.year <= duracionMenu.year
                && hoy.monthValue >= duracionMenu.month
                && hoy.dayOfMonth >= duracionMenu.day

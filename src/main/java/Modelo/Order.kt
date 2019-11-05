@@ -1,6 +1,8 @@
 
 import main.java.GeoCalculator
 import java.time.LocalDate
+import Modelo.Menu
+
 
 class Order ( var date: LocalDate, var user: String, var provider: Provider,
              var listMennus: MutableList<Menu>, var state: String, var precioTotal: Double

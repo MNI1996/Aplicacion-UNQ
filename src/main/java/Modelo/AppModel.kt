@@ -1,6 +1,7 @@
 package Modelo
+
 import ClientUser
-import Menu
+import Modelo.Menu
 import Order
 import Provider
 import org.springframework.stereotype.Component

@@ -4,6 +4,7 @@ import Modelo.Enums.DiasDeSemana
 import Modelo.Enums.Horarios
 import Modelo.Enums.MedidorDelLapso
 import junit.framework.Assert.assertEquals
+import Modelo.Menu
 import org.junit.Test
 
 
