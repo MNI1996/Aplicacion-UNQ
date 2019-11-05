@@ -14,25 +14,33 @@ import kotlin.jvm.Transient
 
 class Menu (
         var name: String="",
+
         var description: String="",
+
         @Enumerated(EnumType.STRING)
         var categoria: Categoria=Categoria.Cerveza,
+
         var valorDelivery: Int=0,
+
         @Transient
         var duracionMenu: Fecha=Fecha(12,12,12),
+
         @Enumerated(EnumType.STRING)
         var horarios: Horarios=Horarios.Afternoon,
-        @Ignore
+
+        @Transient
         var tiempoEspera: TimeLapsus=TimeLapsus(12,MedidorDelLapso.Minutes),
-        @Ignore
+
         var precio: Double=0.0,
-        @Ignore
+
+        @Transient
         var primeraPromocion: Promocion=Promocion(1,0.0),
-        @Ignore
+
+        @Transient
         var segundaPromocion: Promocion?=null,
-        @Ignore
+
         var stock:Int=0,
-        @Ignore
+
         var enabled: Boolean=true
            ) {
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
