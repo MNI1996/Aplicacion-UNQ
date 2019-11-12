@@ -4,20 +4,32 @@ import Modelo.Enums.DiasDeSemana
 import Modelo.Enums.Horarios
 import Modelo.Menu
 import Modelo.Posicion
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
+@Entity
 
-
-class Provider(var name: String, var logo :String, var localidad:String
-               , var ubication: Posicion, var direccion:String
-               , var descripcionService:String, var webSite:String?, var mail:String
-               , var telefono:Int, var horariosDeSemana: MutableList<Horarios>
-               , var diasDeAtencion: MutableList<DiasDeSemana>, var rangoEntrega:Int )
-{
+class Provider(var name: String,
+               var logo :String,
+               var localidad:String,
+               @Transient
+               var ubication: Posicion,
+               var direccion:String,
+               var descripcionService:String,
+               var webSite:String?,
+               var mail:String,
+               var telefono:Int,
+               @Transient
+               var horariosDeSemana: MutableList<Horarios>,
+               @Transient
+               var diasDeAtencion: MutableList<DiasDeSemana>,
+               var rangoEntrega:Int )
+{  @Transient
     var categorias= mutableListOf<String>("Pizza","Cerveza","Hamburguesa","Sushi","Empanadas","Green","Vegano")
+   @Transient
     var menus= emptyList<Menu>().toMutableList()
+   @Transient
     var history= emptyList<Order>().toMutableList()
+
+
     fun addMenu (menu: Menu){
         var wat = isValidM(menu)
         if(wat){menus.add(menu)}

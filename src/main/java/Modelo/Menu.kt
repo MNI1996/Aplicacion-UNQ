@@ -5,8 +5,6 @@ import Modelo.Enums.Horarios
 import Promocion
 import TimeLapsus
 import org.joda.time.DateTime
-import java.time.LocalDate
-import java.util.*
 import javax.persistence.*
 
 @Entity

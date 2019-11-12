@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface DaoOrder: CrudRepository< Order, Long> {
-    fun findByname(name: String): MutableList <Order>
+    fun findByid(id: Long): MutableList <Order>
 }

@@ -2,15 +2,23 @@ package Modelo
 import main.java.GeoCalculator
 import java.time.LocalDate
 import Modelo.Menu
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
-
-class Order ( var date: LocalDate, var user: String, var provider: Provider,
-             var listMennus: MutableList<Menu>, var state: String, var precioTotal: Double
+@Entity
+@Table (name = "MenuOrder")
+class Order (
+            @Transient
+            var date: LocalDate,
+            var user: String,
+            @Transient
+            var provider: Provider,
+            @Transient
+            var listMennus: MutableList<Menu>,
+            var state: String,
+            var precioTotal: Double
              ) {
     var code= Math.random()
+    @Transient
     val geoCalculator = GeoCalculator
 
     @Id
