@@ -5,8 +5,8 @@ import './css/App.css';
 
 import Lenguaje from './componentes/Lenguaje'
 import Home from './componentes/Home'
-import LogIn from './componentes/login';
-import Register from './componentes/Register';
+import LogIn from './componentes/login'
+import Register from './componentes/Register'
 
 class App extends Component {
   render(){

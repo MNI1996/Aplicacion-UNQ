@@ -27,7 +27,7 @@ const navegadorLengusje = navigator.language.split(/[-_]/)[0]
 ReactDOM.render(<IntlProvider locale={navegadorLengusje} messages={lenguaje[navegadorLengusje]}>
                     <App />
                 </IntlProvider>
-                , document.getElementById('root'));
+                , document.getElementById('root'))
 
 
 serviceWorker.unregister();

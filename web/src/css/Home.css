@@ -1,0 +1,46 @@
+.listMenu{
+    overflow: scroll;
+    scrollbar-width: none;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-end-start-radius: 100px;
+    border-start-end-radius: 100px;
+    border-top: 3px inset green;
+    border-bottom: 3px inset green;
+    display: flex;
+    flex-direction: row;    
+    font-weight: bold;
+    color: rgb(253, 249, 242);
+    padding-left: 2px;
+    }
+
+
+.menus{
+    font-weight: bold;
+    color: rgb(253, 249, 242);
+    margin-bottom: 0.5%;
+    }
+
+.menu h1{
+    margin: 30px 6px 30px;
+    font-family: 'Open Sans', sans-serif;
+    background:white;
+    border: #cfe9fa 2px solid; 
+    border-radius: 7px;
+    height: 150px;
+    width: 110px;
+    padding: 10px 10px 30px 10px;
+    font-size:100%;
+    color:#525252;
+    }
+
+.inputsearch{
+    display: flex;
+    width: 80%;
+    margin: 10px auto 10px 10%;
+    border-radius: 30px;
+    border: 2px darkgoldenrod inset;
+    font-size: 150%;
+    padding: 10px;
+    font-family: 'Gill Sans';
+    }

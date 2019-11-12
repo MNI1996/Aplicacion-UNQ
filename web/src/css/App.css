@@ -1,6 +1,9 @@
 html {
   background: #95a5a6;
-  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_embroidery.png);
+  background-image: url('./imagenDeFondo.jpeg');
+  background-size: auto 100% ;
+  min-height: 100%;
+  min-width: 100%;
   }
 
   
@@ -14,8 +17,8 @@ body{
 .header {
   overflow: hidden;
   background-color: #3ca797   ;
-  padding: 20px 10px;
-  width: 98.5%;
+  padding: 20px 10px 10px 10px;
+  width: 97%;
   border-radius: 9px;
 }
 
