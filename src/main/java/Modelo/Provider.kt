@@ -1,6 +1,12 @@
+package Modelo
+
 import Modelo.Enums.DiasDeSemana
 import Modelo.Enums.Horarios
 import Modelo.Menu
+import Modelo.Posicion
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
 
 
 class Provider(var name: String, var logo :String, var localidad:String
@@ -18,6 +24,9 @@ class Provider(var name: String, var logo :String, var localidad:String
         else{throw Exception ("el menu no cumple con los requerimientos minimos de aceptacion")}
 
     }
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    var id:Long = 0
 
     private fun isValidM(menu: Menu): Boolean {
         return(menu.precio.toInt() != 0

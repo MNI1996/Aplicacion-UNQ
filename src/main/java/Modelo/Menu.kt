@@ -1,11 +1,12 @@
 package Modelo
 
-import Fecha
 import Modelo.Enums.Categoria
 import Modelo.Enums.Horarios
 import Promocion
 import TimeLapsus
+import org.joda.time.DateTime
 import java.time.LocalDate
+import java.util.*
 import javax.persistence.*
 
 @Entity
@@ -19,8 +20,7 @@ class Menu (
 
         var valorDelivery: Int,
 
-        @Transient
-        var duracionMenu: Fecha,
+        var duracionMenu: DateTime,
 
         @Enumerated(EnumType.STRING)
         var horarios: Horarios,
@@ -56,11 +56,9 @@ class Menu (
     }
 
     fun itsOver():Boolean{
-        var hoy= LocalDate.now()
-       return( hoy.year <= duracionMenu.year
-               && hoy.monthValue >= duracionMenu.month
-               && hoy.dayOfMonth >= duracionMenu.day
-               )
+        var hoy= DateTime.now()
+         var result=hoy.toLocalDate() == duracionMenu.toLocalDate()
+       return(result)
     }
 
 }

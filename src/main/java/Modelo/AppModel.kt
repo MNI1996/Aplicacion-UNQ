@@ -1,9 +1,9 @@
 package Modelo
 
-import ClientUser
+import Modelo.ClientUser
 import Modelo.Menu
-import Order
-import Provider
+import Modelo.Order
+import Modelo.Provider
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 
