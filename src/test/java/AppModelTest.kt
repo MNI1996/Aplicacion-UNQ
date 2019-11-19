@@ -3,6 +3,9 @@ import Modelo.Enums.Categoria
 import Modelo.Enums.DiasDeSemana
 import Modelo.Enums.Horarios
 import Modelo.Enums.MedidorDelLapso
+import Modelo.ClientUser
+import Modelo.Provider
+import Modelo.Posicion
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 import org.springframework.context.ApplicationContext
@@ -11,10 +14,12 @@ import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 import Modelo.AppModel
 import Modelo.Menu
+import com.github.debop.kodatimes.days
+import org.joda.time.DateTime
+import java.util.*
 import kotlin.test.assertFails
-/*
-@Configuration
-@ComponentScan("*","*")*/
+import kotlin.time.days
+
 class AppModelTest{
 
     @Test
@@ -81,7 +86,7 @@ var lapsus= TimeLapsus(10, MedidorDelLapso.Minutes)
                 mutableListOf(DiasDeSemana.Lunes, DiasDeSemana.Martes, DiasDeSemana.Miercoles,
                         DiasDeSemana.Jueves, DiasDeSemana.Viernes),20)
         var menu= Menu("arroz","arroz blancooooooooooooooo", Categoria.Vegano
-                        ,10, Fecha(28,9,2019), Horarios.Morning
+                        ,10, DateTime.now().plusDays(1), Horarios.Morning
                         ,lapsus ,50.00 , Promocion(11,30.00)
                         ,null,100,true)
         app.signUpProvider(provider)
@@ -107,7 +112,7 @@ var lapsus= TimeLapsus(10, MedidorDelLapso.Minutes)
                 mutableListOf(DiasDeSemana.Lunes, DiasDeSemana.Martes, DiasDeSemana.Miercoles,
                         DiasDeSemana.Jueves, DiasDeSemana.Viernes),20)
         var menu= Menu("arroz","arroz blancooooooooooooooo", Categoria.Vegano
-                ,10, Fecha(28,9,2019), Horarios.Morning
+                ,10, DateTime.now().plusDays(2), Horarios.Morning
                 ,lapsus ,50.00 , Promocion(11,30.00)
                 ,null,100,true)
         app.signUpProvider(provider)
@@ -121,14 +126,7 @@ var lapsus= TimeLapsus(10, MedidorDelLapso.Minutes)
 
     }
 
-    @Test
-    fun pruebaDeAspecto(){
 
-        var ctx : ApplicationContext = AnnotationConfigApplicationContext()
-
-        var ps = ctx.getBean(AppModel::class.java)
-        ps.searchProviderByName("holi")
-    }
 
 
     }

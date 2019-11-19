@@ -3,8 +3,11 @@ import Modelo.Enums.Categoria
 import Modelo.Enums.DiasDeSemana
 import Modelo.Enums.Horarios
 import Modelo.Enums.MedidorDelLapso
+import Modelo.Provider
+import Modelo.Posicion
 import junit.framework.Assert.assertEquals
 import Modelo.Menu
+import org.joda.time.DateTime
 import org.junit.Test
 
 
@@ -19,7 +22,7 @@ class ProviderTest{
                 mutableListOf(DiasDeSemana.Lunes, DiasDeSemana.Martes, DiasDeSemana.Miercoles,
                         DiasDeSemana.Jueves, DiasDeSemana.Viernes),20)
         var menu= Menu("arroz","arroz blancooooooooooooooo", Categoria.Vegano
-                ,10,Fecha(28,9,2019), Horarios.Morning, TimeLapsus(10, MedidorDelLapso.Minutes),50.00
+                ,10,DateTime(), Horarios.Morning, TimeLapsus(10, MedidorDelLapso.Minutes),50.00
                 , Promocion(11,30.00),null
                 ,100,true)
         prov.addMenu(menu)
@@ -34,7 +37,7 @@ class ProviderTest{
                 mutableListOf(DiasDeSemana.Lunes, DiasDeSemana.Martes, DiasDeSemana.Miercoles,
                         DiasDeSemana.Jueves, DiasDeSemana.Viernes),20)
         var menu= Menu("arroz","arroz blancooooooooooooooo", Categoria.Vegano
-                ,10,Fecha(28,9,2019), Horarios.Morning, TimeLapsus(10, MedidorDelLapso.Minutes),50.00
+                ,10,DateTime(), Horarios.Morning, TimeLapsus(10, MedidorDelLapso.Minutes),50.00
                 , Promocion(3,30.00),null
                 ,100,true)
         assertFails(" el menu no cumple con los requerimientos minimos de aceptacion",{prov.addMenu(menu)})
@@ -42,7 +45,7 @@ class ProviderTest{
     @Test
     fun quitoMenuCaducoYNoPuedo(){
         var menu= Menu("arroz","arroz blancooooooooooooooo", Categoria.Vegano
-                ,10,Fecha(28,9,2019), Horarios.Morning, TimeLapsus(10, MedidorDelLapso.Minutes),50.00
+                ,10, DateTime(), Horarios.Morning, TimeLapsus(10, MedidorDelLapso.Minutes),50.00
                 , Promocion(11,30.00),null
                 ,100,true)
         var prov =Provider("el Buen Comer","url","Quilmes", Posicion(),
