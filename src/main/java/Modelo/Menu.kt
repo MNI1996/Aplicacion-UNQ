@@ -2,7 +2,6 @@ package Modelo
 
 import Modelo.Enums.Categoria
 import Modelo.Enums.Horarios
-import Promocion
 import TimeLapsus
 import org.joda.time.DateTime
 import javax.persistence.*
@@ -28,15 +27,16 @@ class Menu (
 
         var precio: Double=0.0,
 
-        @Transient
+        @ManyToOne(targetEntity=Promocion::class)
         var primeraPromocion: Promocion,
 
-        @Transient
+        @ManyToOne(targetEntity=Promocion::class)
         var segundaPromocion: Promocion?,
 
         var stock:Int,
 
-        @Transient
+
+
         var enabled: Boolean
         ) {
     @Id

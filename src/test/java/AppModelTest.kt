@@ -1,19 +1,15 @@
 
+import Modelo.*
 import Modelo.Enums.Categoria
 import Modelo.Enums.DiasDeSemana
 import Modelo.Enums.Horarios
 import Modelo.Enums.MedidorDelLapso
-import Modelo.ClientUser
-import Modelo.Provider
-import Modelo.Posicion
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
-import Modelo.AppModel
-import Modelo.Menu
 import com.github.debop.kodatimes.days
 import org.joda.time.DateTime
 import java.util.*

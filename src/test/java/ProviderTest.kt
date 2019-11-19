@@ -7,6 +7,7 @@ import Modelo.Provider
 import Modelo.Posicion
 import junit.framework.Assert.assertEquals
 import Modelo.Menu
+import Modelo.Promocion
 import org.joda.time.DateTime
 import org.junit.Test
 
