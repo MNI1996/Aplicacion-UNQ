@@ -2,20 +2,20 @@ package Modelo
 import main.java.GeoCalculator
 import java.time.LocalDate
 import Modelo.Menu
+import org.joda.time.DateTime
 import javax.persistence.*
 
 @Entity
 @Table (name = "MenuOrder")
 class Order (
-            @Transient
-            var date: LocalDate,
-            var user: String,
-            @Transient
-            var provider: Provider,
-            @Transient
-            var listMennus: MutableList<Menu>,
-            var state: String,
-            var precioTotal: Double
+        var date: DateTime,
+        var user: String,
+        @ManyToOne(targetEntity=Provider::class)
+        var provider: Provider,
+        @ElementCollection
+        var listMennus: MutableList<Menu>,
+        var state: String,
+        var precioTotal: Double
              ) {
     var code= Math.random()
     @Transient

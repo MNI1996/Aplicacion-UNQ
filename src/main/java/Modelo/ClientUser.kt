@@ -12,7 +12,7 @@ class ClientUser (var name: String,
                   var direccion: String )
 {
     var saldo=0.00
-    @Transient
+    @ElementCollection
     var history= emptyList<Order>().toMutableList()
 
     @Id

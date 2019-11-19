@@ -2,31 +2,26 @@ package Modelo
 
 import Modelo.Enums.DiasDeSemana
 import Modelo.Enums.Horarios
-import Modelo.Menu
-import Modelo.Posicion
 import javax.persistence.*
 @Entity
 
 class Provider(var name: String,
                var logo :String,
                var localidad:String,
-               @Transient
-               var ubication: Posicion,
+               var ubication: String,
                var direccion:String,
                var descripcionService:String,
                var webSite:String?,
                var mail:String,
                var telefono:Int,
-               @Transient
+               @ElementCollection(targetElement = EnumType.STRING)
                var horariosDeSemana: MutableList<Horarios>,
-               @Transient
+               @ElementCollection(targetElement = EnumType.STRING)
                var diasDeAtencion: MutableList<DiasDeSemana>,
                var rangoEntrega:Int )
-{  @Transient
-    var categorias= mutableListOf<String>("Pizza","Cerveza","Hamburguesa","Sushi","Empanadas","Green","Vegano")
-   @Transient
+{  @ElementCollection
     var menus= emptyList<Menu>().toMutableList()
-   @Transient
+    @ElementCollection
     var history= emptyList<Order>().toMutableList()
 
 
@@ -50,7 +45,6 @@ class Provider(var name: String,
                 && menu.valorDelivery>=10
                 && menu.valorDelivery<=40
                 && menu.stock != 0
-                && categorias.contains(menu.categoria.name)
                 && !(menu.itsOver())
                 )
 

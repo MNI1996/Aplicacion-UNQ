@@ -4,6 +4,7 @@ import Modelo.ClientUser
 import Modelo.Menu
 import Modelo.Order
 import Modelo.Provider
+import org.joda.time.DateTime
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 
@@ -71,7 +72,7 @@ class AppModel() {
        var precioAPagar=montoFinal(menuList)
         if (validBuy(provider,menuList) && precioAPagar <= user.saldo)
         {
-            var newOrder= Order(LocalDate.now(), user.name,
+            var newOrder= Order(DateTime(), user.name,
                     provider, generarListado(menuList), "En camino"
                     , precioAPagar)
             user.history.add(newOrder)

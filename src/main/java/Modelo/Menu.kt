@@ -2,7 +2,6 @@ package Modelo
 
 import Modelo.Enums.Categoria
 import Modelo.Enums.Horarios
-import TimeLapsus
 import org.joda.time.DateTime
 import javax.persistence.*
 
@@ -22,8 +21,7 @@ class Menu (
         @Enumerated(EnumType.STRING)
         var horarios: Horarios,
 
-        @Transient
-        var tiempoEspera: TimeLapsus,
+        var tiempoEspera: DateTime,
 
         var precio: Double=0.0,
 
