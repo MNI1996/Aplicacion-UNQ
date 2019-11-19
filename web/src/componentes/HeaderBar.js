@@ -1,24 +1,39 @@
 import React from 'react'
 import { Link } from 'react-router-dom' 
 import { injectIntl } from 'react-intl'
+import { useFirebaseApp, useUser } from 'reactfire'
 
-class HeaderBar extends React.Component{
+import '../css/App.css'
+
+function HeaderBar(props){
     
-    render(){
-        const intl = this.props.intl
-        const Viandas = intl.formatMessage({
-        id: 'Viandas',
-        defaultMessage: 'eh ta mal'
-        })
-        return(
-            <div className="header">
+    const firebase = useFirebaseApp()
+
+    const user = useUser()
+
+    const logOut = async () => {
+        firebase.auth().signOut()
+      }
+    const intl = props.intl
+    const Viandas = intl.formatMessage({
+    id: 'Viandas',
+    defaultMessage: 'eh ta mal'
+    })
+    const LogOut = intl.formatMessage({
+        id: 'LogOut',
+        defaultMessage: 'LogOut'
+    })
+    return(
+        <div className="header">
             <Link className="logo" to={'/'}>{Viandas}</Link>
-            <div className="header-right"></div>
+            <div className="header-right">
+                { user ? 
+                <button className="header-logOut" onClick={logOut}>{ LogOut }</button>
+                : 'mandioca' }
+            </div>
         </div>
-        )
-    }
+    )
 }
 
-HeaderBar = injectIntl(HeaderBar)
 
-export default HeaderBar;
+export default injectIntl(HeaderBar)

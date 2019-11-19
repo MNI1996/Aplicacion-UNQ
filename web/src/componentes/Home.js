@@ -1,28 +1,25 @@
-import React, { Fragment } from "react";
-import { injectIntl } from "react-intl";
-import { Link } from 'react-router-dom'
+import React, { Fragment } from 'react'
 import MenusEnLista from './listaMenus'
 import HeaderBar from './HeaderBar'
+import { useFirebaseApp, useUser } from 'reactfire'
+
 import Mapa from './mapa'
+import Login from './login'
 
 
-class Home extends React.Component{
+function Home(props){
+    const firebase = useFirebaseApp()
+
+    const user = useUser()
     
-    render(){   
-        const intl = this.props.intl
-        const Viandas = intl.formatMessage({
-            id: 'Viandas',
-            defaultMessage: 'eh ta mal'
-            })
-        return(
-            <Fragment>
-                <HeaderBar />
-                <MenusEnLista/>
-            </Fragment>
-    )}
+    return(
+        <Fragment>
+            <HeaderBar />
+            { !user ? <Login/> 
+            : <MenusEnLista/> }
+        </Fragment>
+    )
     
 }
-
-Home = injectIntl(Home)
 
 export default Home

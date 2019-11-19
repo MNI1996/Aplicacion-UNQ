@@ -1,15 +1,19 @@
 
+import fetch from 'node-fetch'
+
 class Api {
     url = "http://localhost:3000"
-    obtenerAlgo(){
-        var ourRequest = new XMLHttpRequest();
-        ourRequest.open('GET',this.url);
-        ourRequest.onload = function () {
-            var ourData = JSON.parse(ourRequest.responseText);
-            console.log(ourData);
-        };
-        ourRequest.send();
-        return ourRequest
+    
+    obtenerEspacios(){
+        const url = new URL('/Espacio/obtenerEspacios', urlBase).toString()
+
+        return fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({id: idEspacio}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json()).then(({ Plantas }) => Plantas)
     }
 }
 export default Api

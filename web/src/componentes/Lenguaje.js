@@ -19,6 +19,4 @@ class Lenguaje extends React.Component{
   }
 }
 
-Lenguaje = injectIntl(Lenguaje)
-
-export default Lenguaje
+export default injectIntl(Lenguaje)

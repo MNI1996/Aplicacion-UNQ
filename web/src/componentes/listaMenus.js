@@ -61,6 +61,4 @@ class MenusEnLista extends React.Component   {
 } 
 
 // eslint-disable-next-line no-class-assign
-MenusEnLista = injectIntl(MenusEnLista)
-
-export default MenusEnLista
+export default injectIntl(MenusEnLista)

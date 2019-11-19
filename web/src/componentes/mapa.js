@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { HereMap, Marker, PathFinder } from 'rc-here-maps';
+import React, { Fragment } from 'react'
+import { HereMap, PathFinder } from 'rc-here-maps';
 
 
 const Mapa = () => {
@@ -14,4 +14,4 @@ const Mapa = () => {
   );
 };
 
-export default Mapa;  
+export default Mapa

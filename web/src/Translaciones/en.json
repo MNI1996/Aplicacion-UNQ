@@ -6,5 +6,8 @@
     "Bienvenidos":"Welcome",
     "Usuario": "User",
     "Contraseña": "password",
-    "Busqueda": "search"
+    "Busqueda": "search",
+    "Mail": "Mail",
+    "Direccion": "addres",
+    "Localidad":"Location"
 }
