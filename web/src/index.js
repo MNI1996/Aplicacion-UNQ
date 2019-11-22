@@ -5,7 +5,6 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { IntlProvider } from 'react-intl'
 
-import firebaseConfig from './Firebase-Config.js'
 import { FirebaseAppProvider } from 'reactfire'
 
 import mensajesEn from './Translaciones/en.json'
@@ -27,7 +26,7 @@ const navegadorLengusje = navigator.language.split(/[-_]/)[0]
 //crear menu
 ReactDOM.render(
                 <IntlProvider locale={navegadorLengusje} messages={lenguaje[navegadorLengusje]}>
-                    <FirebaseAppProvider firebaseConfig={firebaseConfig} >
+                    <FirebaseAppProvider firebaseConfig={process.env.KEY_FIREBASE} >
                         <App />
                     </FirebaseAppProvider>
                 </IntlProvider>
