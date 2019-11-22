@@ -1,0 +1,47 @@
+.containerFormulario {	
+    margin: 30px auto auto 10%;
+    font-family: 'Open Sans', sans-serif;
+    background:white;
+    border: #2980b9 2px solid; 
+    border-radius: 25px;
+    height: 400px;
+    width: 35%;
+    padding:10px 10px 30px 10px;
+    display: inline-block;
+    }
+@media screen and (max-width: 790px) {
+    .containerFormulario {	
+        margin: 30px auto auto 5% !important;
+        width: 300px !important;
+        }
+    }
+.containerFormulario h2 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 200;
+    font-size: 250%;
+    color: #34495e;
+}
+.containerFormulario h1 {
+    margin:0;
+    padding:0;
+    margin-left:5%;
+    font-size:160%;
+    color:#525252;
+            
+}
+
+.inputLogin {   
+    background:#ecf0f1;
+    border: #ccc 1px solid;
+    border-bottom: #ccc 2px solid;
+    padding: 8px;
+    width:250px;
+    color:#AAAAAA;
+    margin-top:10px;
+    margin-left:5%;
+    font-size:1em;
+    border-radius:4px;
+    }   
+    

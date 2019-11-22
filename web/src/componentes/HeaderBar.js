@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { injectIntl } from 'react-intl'
 import { useFirebaseApp, useUser } from 'reactfire'
 
-import '../css/App.css'
+import '../css/Header.css'
 
 function HeaderBar(props){
     
@@ -21,14 +21,17 @@ function HeaderBar(props){
     })
     const LogOut = intl.formatMessage({
         id: 'LogOut',
-        defaultMessage: 'LogOut'
+        defaultMessage: 'eh ta mal'
     })
     return(
         <div className="header">
             <Link className="logo" to={'/'}>{Viandas}</Link>
             <div className="header-right">
-                { user ? 
+                { user ?
+                <>
+                <img className="imagen" src={user.photoURL} />
                 <button className="header-logOut" onClick={logOut}>{ LogOut }</button>
+                </>
                 : 'mandioca' }
             </div>
         </div>

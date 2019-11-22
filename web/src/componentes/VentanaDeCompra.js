@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { injectIntl } from 'react-intl'
 import Menu from './Menu.js'
+import HeaderBar from './HeaderBar.js'
 import '../css/Home.css'
 
 class MenusEnLista extends React.Component   {
@@ -43,15 +44,14 @@ class MenusEnLista extends React.Component   {
   }
 
   render(){
-    // eslint-disable-next-line react/prop-types
     const intl = this.props.intl
-    // eslint-disable-next-line react/prop-types
     const Busqueda = intl.formatMessage({
         id: 'Busqueda',
         defaultMessage: 'eh ta mal'
         })
     return(
       <Fragment>
+        <HeaderBar />
         <input type="text" className="inputsearch" name="busqueda" onChange={event => this.handleChangeSearch(event)} placeholder={Busqueda} />
           <ul className="listMenu">
             { this.showAllMenus() }   

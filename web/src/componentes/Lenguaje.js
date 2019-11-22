@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { injectIntl, IntlShape } from 'react-intl'
+import React from 'react'
+import { injectIntl } from 'react-intl'
 
 class Lenguaje extends React.Component{
   

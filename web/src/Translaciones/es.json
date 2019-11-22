@@ -9,5 +9,6 @@
     "Busqueda": "Busqueda",
     "Mail": "Correo",
     "Direccion": "Direccion",
-    "Localidad":"Localidad"
+    "Google": "Google",
+    "LogOut": "LogOut"
 }

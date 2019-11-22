@@ -9,5 +9,7 @@
     "Busqueda": "search",
     "Mail": "Mail",
     "Direccion": "addres",
-    "Localidad":"Location"
+    "Localidad":"Location",
+    "Google": "Google",
+    "LogOut": "LogOut"
 }
