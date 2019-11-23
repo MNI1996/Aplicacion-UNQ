@@ -7,7 +7,7 @@
     height: 400px;
     width: 35%;
     padding:10px 10px 30px 10px;
-    display: inline-block;
+    display: inline-table;
     }
 @media screen and (max-width: 790px) {
     .containerFormulario {	

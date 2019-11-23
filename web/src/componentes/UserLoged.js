@@ -9,15 +9,20 @@ function UserLoged(props){
     const [ comprador , setComprador ] = useState([])
     const [ proveedor , setproveedor ] = useState([])
     
-
+    console.log(props)
     return(
-        <Fragment>
+        // <Fragment >
+            <>
             <FormularioProveedor/>
+            
             {/* { provedor ? : } */}
 
             {/* { comprador ? : } */}
+
+            
             <FormularioComprador />
-        </Fragment>
+            </>
+        // </Fragment>
     )
     
 }
