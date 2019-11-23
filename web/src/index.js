@@ -15,7 +15,6 @@ const lenguaje = {
 
 const navegadorLengusje = navigator.language.split(/[-_]/)[0]
 
-console.log(process.env.REACT_APP_FIREBASE)
 //menu con loing y registrar
 //registrar usuarios cliente
 //login -> provedores y cliente
@@ -25,7 +24,7 @@ console.log(process.env.REACT_APP_FIREBASE)
 //crear menu
 ReactDOM.render(
                 <IntlProvider locale={navegadorLengusje} messages={lenguaje[navegadorLengusje]}>
-                    <FirebaseAppProvider firebaseConfig={process.env.REACT_APP_FIREBASE} >
+                    <FirebaseAppProvider firebaseConfig={JSON.parse(process.env.REACT_APP_FIREBASE)} >
                         <App />
                     </FirebaseAppProvider>
                 </IntlProvider>
