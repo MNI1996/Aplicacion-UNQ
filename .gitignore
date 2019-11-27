@@ -27,3 +27,8 @@ node_modules
 target
 .target
 *.target
+
+KEY_FIREBASE.json
+.json
+.env
+.env.production
