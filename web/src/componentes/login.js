@@ -3,6 +3,7 @@ import { injectIntl } from 'react-intl'
 import intl from './i18n-Palaras'
 import 'firebase/auth'
 import { useFirebaseApp } from 'reactfire'
+import { logueo } from '../services/ServiceAuth0'
 
 import '../css/Login.css'
 
@@ -11,7 +12,7 @@ function LogIn (props)  {
   const firebase = useFirebaseApp()
   const logInGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider()
-    await firebase.auth().signInWithPopup(provider)
+    logueo(firebase, provider).then(response => console.log(response))
   }
 
   const palabras = 

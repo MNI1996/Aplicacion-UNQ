@@ -1,27 +1,27 @@
-const rp = require('request-promise');
+const rp = require('request-promise')
 
 
-export function get(url) {
-    return callToServer('GET', url, {})
+export function get(url, token) {
+    return callToServer('GET', url, token, {})
   }
   
-export function post( url, data) {
-    return callToServer('POST', url, data)
+export function post( url, token , params) {
+    return callToServer('POST', url, token, {json: params})
   }
   
-export function put( url, data) {
-    return callToServer('PUT', url, {data: data})
+export function put( url, token , params) {
+    return callToServer('PUT', url, token, {json: params})
   }
 
-async function callToServer(method, url, params) {
+async function callToServer(method, url, token, params) {
   let options = {
     uri: url,
     method: method,
     headers: {
-      "X-Firebase-ID-Token": params,
+      "X-Firebase-ID-Token": token,
       "content-type": "application/json"
     },
-    body: { },
+    body: params,
     json: true 
 }
   return await rp(options).catch((error) => { console.log('algo salio mal', error) })
