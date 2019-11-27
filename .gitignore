@@ -29,9 +29,10 @@ target
 *.target
 
 KEY_FIREBASE.json
+*.json
 .json
 .env
 .env.production
 
+*.iml
 .iml
-iml
