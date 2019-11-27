@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface DaoUser: CrudRepository< ClientUser, Long> {
+
     fun findByid(id: Long): MutableList <ClientUser>
+
+    fun findByMail(mail: String): ClientUser
+
+    fun existsClientUserByMail(mail: String): Boolean
 
 }

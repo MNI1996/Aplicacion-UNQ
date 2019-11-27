@@ -4,6 +4,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseToken
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.io.ClassPathResource;
 import java.io.IOException
@@ -17,17 +18,14 @@ class FireBaseService {
                     .setCredentials(GoogleCredentials.fromStream(ClassPathResource("/KEY_FIREBASE.json").inputStream))
                     .build()
             FirebaseApp.initializeApp(options)
-            print("FireBase inizialized")
+            println("FireBase inizialized")
         } catch (error: IOException) {
             error.printStackTrace()
         }
     }
 
-    fun veryfiToken(token: String): Boolean {
-        return FirebaseAuth.getInstance().verifyIdToken(token).isEmailVerified
+    fun veryfiToken(token: String): FirebaseToken {
+        return FirebaseAuth.getInstance().verifyIdToken(token)
     }
 
-    fun getMail(token: String): String? {
-        return FirebaseAuth.getInstance().verifyIdToken(token).email
-    }
 }

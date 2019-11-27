@@ -14,9 +14,11 @@ class ApiClientUser {
     lateinit var Clientes: DispacherUser
 
     @RequestMapping("/LogUser", method = [RequestMethod.POST])
-    fun main(@RequestHeader("X-Firebase-ID-Token") token: String):Boolean {
-        var userId = FireBaseService().veryfiToken(token)
-        FireBaseService().getMail(token)
+    fun main(@RequestHeader("X-Firebase-ID-Token") token: String):Boolean? {
+        var userData = FireBaseService().veryfiToken(token)
+        var userId = userData.isEmailVerified
+        var data = Clientes.getDataUser(userData)
+        println(data)
         return userId;
     }
 }

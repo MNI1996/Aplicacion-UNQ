@@ -14,7 +14,7 @@ class ApiMenu(){
 
     @RequestMapping("/main", method = [RequestMethod.POST])
     fun main(@RequestHeader("X-Firebase-ID-Token") token: String):Boolean {
-        var userId = FireBaseService().veryfiToken(token)
+        var userId = FireBaseService().veryfiToken(token).isEmailVerified
         return userId;
     }
 

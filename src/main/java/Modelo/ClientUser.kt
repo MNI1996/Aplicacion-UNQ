@@ -1,6 +1,5 @@
 package Modelo
-import Modelo.AppModel
-import Modelo.Menu
+
 import javax.persistence.*
 
 @Entity
@@ -30,5 +29,7 @@ class ClientUser (var name: String,
     fun recargar(i: Double) {
         saldo += i
     }
+    fun DatosClienteJson(){
 
+    }
 }
