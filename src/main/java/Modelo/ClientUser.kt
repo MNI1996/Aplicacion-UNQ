@@ -5,14 +5,13 @@ import javax.persistence.*
 
 @Entity
 class ClientUser (var name: String,
-                  var password: String,
                   var mail: String,
-                  var telefono: Int,
-                  @ManyToOne(targetEntity=DatosComprador::class)
-                  var datosComprador: DatosComprador,
-                  @ManyToOne(targetEntity=Provider::class)
-                  var datosProvider: Provider)
+                  var telefono: Int)
 {
+    @ManyToOne(targetEntity=DatosComprador::class)
+    var datosComprador: DatosComprador? = null
+    @ManyToOne(targetEntity=Provider::class)
+    var datosProvider: Provider? = null
     var saldo=0.00
     @ElementCollection
     var history= emptyList<Order>().toMutableList()
