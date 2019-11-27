@@ -29,8 +29,8 @@ class Provider(var name: String,
         var wat = isValidM(menu)
         if(wat){menus.add(menu)}
         else{throw Exception ("el menu no cumple con los requerimientos minimos de aceptacion")}
-
     }
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     var id:Long = 0

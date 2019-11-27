@@ -8,8 +8,10 @@ class ClientUser (var name: String,
                   var password: String,
                   var mail: String,
                   var telefono: Int,
-                  var localidad: String,
-                  var direccion: String )
+                  @ManyToOne(targetEntity=DatosComprador::class)
+                  var datosComprador: DatosComprador,
+                  @ManyToOne(targetEntity=Provider::class)
+                  var datosProvider: Provider)
 {
     var saldo=0.00
     @ElementCollection

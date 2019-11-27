@@ -44,11 +44,23 @@
     name="description"
     content="Web site created using create-react-app"
   />
+
   <script src="https://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script> 
   <script src="https://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script> 
   <script src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script> 
   <script src="https://js.api.here.com/v3/3.0/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script> 
+  <!-- leaf maps dependencias    -->
   
+  <!-- unpkg, production (minified) -->
+  <script src="https://unpkg.com/react-leaflet/dist/react-leaflet.min.js"></script>
+  <!-- unpkg, development -->
+  <script src="https://unpkg.com/react-leaflet/dist/react-leaflet.js"></script>
+  <!-- CDNJS, production (minified) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-leaflet/2.0.0/react-leaflet.min.js"></script>
+  <!-- CDNJS, development -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-leaflet/2.0.0/react-leaflet.js"></script>
+
+
   <!-- bing maps dependencias    
   <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=[Your_Bing_Maps_Key]' async defer></script>
   <reference path="types/MicrosoftMaps/CustomMapStyles.d.ts" />
