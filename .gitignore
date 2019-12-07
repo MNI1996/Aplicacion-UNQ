@@ -34,6 +34,10 @@ KEY_FIREBASE.json
 application.properties
 
 */resources/*
+/resources/*
+*/resources
+/resources
+resources
 
 .env
 .env.production
