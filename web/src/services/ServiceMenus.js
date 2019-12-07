@@ -1,16 +1,16 @@
 const rp = require('request-promise')
 
 
-export function get(url, token) {
-    return callToServer('GET', url, token, {})
+export async function get(url, token) {
+    return await callToServer('GET', url, token, {})
   }
   
-export function post( url, token , params) {
-    return callToServer('POST', url, token, {json: params})
+export async function post( url, token , params) {
+    return await callToServer('POST', url, token, {json: params})
   }
   
-export function put( url, token , params) {
-    return callToServer('PUT', url, token, {json: params})
+export async function put( url, token , params) {
+    return await callToServer('PUT', url, token, {json: params})
   }
 
 async function callToServer(method, url, token, params) {

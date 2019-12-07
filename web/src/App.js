@@ -13,7 +13,8 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" render={props => <div><Home {...props} /> </div>}/>
-          <PrivateRoute exact path="/Menus" component={props => <div><ListaMenus {...props} /> </div>}/>
+          {/* <PrivateRoute */}
+          <Route exact path="/Menus" component={props => <div><ListaMenus {...props} /> </div>}/>
           <Route exact path="/Lenguaje" component={Lenguaje}/>
         </Switch>
       </BrowserRouter>

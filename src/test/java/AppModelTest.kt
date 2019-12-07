@@ -21,15 +21,15 @@ class AppModelTest{
     @Test
     fun registroUsuarioExitoso(){
         var app= AppModel()
-        var user = ClientUser("marcos","anhur",111234543)
+        var user = ClientUser("marcos","anhur","111234543")
         app.signUpClientUser(user)
         assertEquals(app.clientsUsers.size,1)
     }
     @Test
     fun registroUsuarioFallido(){
         var app= AppModel()
-        var user = ClientUser("marcos","anhur",111234543)
-        var user2 = ClientUser("marcos","anhur",112323234)
+        var user = ClientUser("marcos","anhur","111234543")
+        var user2 = ClientUser("marcos","anhur","112323234")
         app.signUpClientUser(user)
 
        assertFails("El usuario marcos ya esta registrado", { app.signUpClientUser(user2) })
@@ -71,7 +71,7 @@ class AppModelTest{
     fun generoUnaOrdenExitosa(){
 
         var app= AppModel()
-        var user= ClientUser("marcos","anhur",111234543)
+        var user= ClientUser("marcos","anhur","111234543")
         var provider=Provider("el Buen Comer","url","Quilmes", "awd",
                 "add","servicio de comidas"
                 ,null,"sdhad@gmail.com",45434542, mutableListOf(Horarios.Morning, Horarios.Night),
@@ -95,7 +95,7 @@ class AppModelTest{
     @Test
     fun generoUnaOrdenFallida(){
         var app= AppModel()
-        var user= ClientUser("marcos","anhur",111234543)
+        var user= ClientUser("marcos","anhur","111234543")
         var provider=Provider("el Buen Comer","url","Quilmes", "asd",
                 "add","servicio de comidas"
                 ,null,"sdhad@gmail.com",45434542, mutableListOf(Horarios.Morning, Horarios.Night),

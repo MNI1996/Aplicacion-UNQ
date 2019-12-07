@@ -1,11 +1,12 @@
 package Modelo
 
+import org.json.simple.JSONObject
 import javax.persistence.*
 
 @Entity
 class ClientUser (var name: String,
                   var mail: String,
-                  var telefono: Int)
+                  var telefono: String?)
 {
     @ManyToOne(targetEntity=DatosComprador::class)
     var datosComprador: DatosComprador? = null
@@ -32,4 +33,6 @@ class ClientUser (var name: String,
     fun DatosClienteJson(){
 
     }
+
+
 }

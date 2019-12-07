@@ -24,7 +24,7 @@ export default (intl, ids) => {
         }),
         Google: intl.formatMessage({
           id: 'Google',
-          defaultMessage: 'Google'
+          defaultMessage: 'eh ta mal'
         })
     }
     return ids.reduce((res, id) => [ ...res, translations[id]] , [ ])

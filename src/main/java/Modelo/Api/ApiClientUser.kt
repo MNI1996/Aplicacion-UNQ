@@ -1,7 +1,12 @@
 package Modelo.Api
 
+import Modelo.ClientUser
+import Modelo.DatosComprador
 import Modelo.Dispachers.DispacherMenu
 import Modelo.Dispachers.DispacherUser
+import Modelo.Provider
+import com.google.firebase.auth.FirebaseToken
+import org.json.simple.JSONObject
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -14,11 +19,29 @@ class ApiClientUser {
     lateinit var Clientes: DispacherUser
 
     @RequestMapping("/LogUser", method = [RequestMethod.POST])
-    fun main(@RequestHeader("X-Firebase-ID-Token") token: String):Boolean? {
+    fun main(@RequestHeader("X-Firebase-ID-Token") token: String): ClientUser {
         var userData = FireBaseService().veryfiToken(token)
-        var userId = userData.isEmailVerified
-        var data = Clientes.getDataUser(userData)
+        var user = FireBaseService().getUserData(userData.uid)
+        var data = Clientes.getDataUser(user)
         println(data)
-        return userId;
+        return data
+    }
+
+    @RequestMapping("/CompradorData", method = [RequestMethod.POST])
+    fun comprador(@RequestHeader("X-Firebase-ID-Token") token: String,@RequestBody datosComprador: DatosComprador): ClientUser {
+        var userData = FireBaseService().veryfiToken(token)
+        var user = FireBaseService().getUserData(userData.uid)
+        var data = Clientes.setCompradorData(user,datosComprador)
+        println(data)
+        return data
+    }
+
+    @RequestMapping("/ProviderData", method = [RequestMethod.POST])
+    fun provider(@RequestHeader("X-Firebase-ID-Token") token: String,@RequestBody datosProvedor: Provider): ClientUser {
+        var userData = FireBaseService().veryfiToken(token)
+        var user = FireBaseService().getUserData(userData.uid)
+        var data = Clientes.setProvedorData(user,datosProvedor)
+        println(data)
+        return data
     }
 }

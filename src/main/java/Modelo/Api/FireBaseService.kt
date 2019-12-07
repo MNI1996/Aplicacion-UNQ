@@ -5,7 +5,7 @@ import com.google.firebase.FirebaseOptions
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseToken
-import org.springframework.beans.factory.annotation.Value
+import com.google.firebase.auth.UserRecord
 import org.springframework.core.io.ClassPathResource;
 import java.io.IOException
 
@@ -26,6 +26,10 @@ class FireBaseService {
 
     fun veryfiToken(token: String): FirebaseToken {
         return FirebaseAuth.getInstance().verifyIdToken(token)
+    }
+
+    fun getUserData(uid: String): UserRecord {
+        return FirebaseAuth.getInstance().getUser(uid)
     }
 
 }

@@ -1,28 +1,26 @@
-import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Fragment } from 'react'
 import FormularioComprador from './FormularioComprador'
 import FormularioProveedor from './FormularioProveedor'
 
 
 function UserLoged(props){
 
-    const [ comprador , setComprador ] = useState([])
-    const [ proveedor , setproveedor ] = useState([])
+    const { setClientData, clientData, setProviderData, providerData } = props
     
-    console.log(props)
     return(
-        // <Fragment >
-            <>
-            <FormularioProveedor/>
+        <Fragment >            
+            { providerData ? 
+                <div> POTOMA </div>:
+                <FormularioProveedor 
+                setProviderData={setProviderData}
+                providerData={providerData} /> }
             
-            {/* { provedor ? : } */}
-
-            {/* { comprador ? : } */}
-
-            
-            <FormularioComprador />
-            </>
-        // </Fragment>
+            { clientData ? 
+                <div>YACOMO</div>:
+                <FormularioComprador 
+                setClientData={setClientData}
+                clientData={clientData} /> }
+        </Fragment>
     )
     
 }

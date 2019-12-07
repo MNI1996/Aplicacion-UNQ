@@ -10,6 +10,7 @@ import Mapa from './mapa'
 
 function FormularioComprador(props)  {
 
+  const { setClientData, clientData } = props
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   

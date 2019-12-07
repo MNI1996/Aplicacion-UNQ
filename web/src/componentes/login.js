@@ -8,11 +8,20 @@ import { logueo } from '../services/ServiceAuth0'
 import '../css/Login.css'
 
 function LogIn (props)  {
+  
+  const {setClientData, setProviderData} = props
 
+  
   const firebase = useFirebaseApp()
   const logInGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider()
-    logueo(firebase, provider).then(response => console.log(response))
+    await logueo(firebase, provider).then(response => setDatas(response)).catch(firebase.auth().signOut())
+  } 
+
+  const setDatas = (response) => {
+    setClientData(response.datosComprador)
+    setProviderData(response.datosProvider)
+    return response
   }
 
   const palabras = 
@@ -22,7 +31,7 @@ function LogIn (props)  {
     <div className="containerLogin">
       <div className="login">
           <h2>{palabras[0]}</h2>
-          <br />
+          <br/>
           <button className="inputSubmit" onClick={logInGoogle}>{palabras[1]}</button>
           <br />
       </div>
@@ -30,13 +39,3 @@ function LogIn (props)  {
   )
 }
 export default injectIntl(LogIn)
-
-{/* <h1>{Usuario}</h1>
-          <input type="email" className="inputLogin" onChange={ (event) => setUserName(event.target.value)} placeholder={Usuario} />
-          <h1>{Contraseña}</h1>
-          <input type="password" className="inputLogin" onChange={(event) => setPassword(event.target.value)} placeholder={Contraseña} />
-          <br />
-          <button className="inputSubmit" onClick={handleSubmit}>{Ingreso}</button>
-          <br />
-          <Link className="link" to={'/Registrarse'}>{Registrar}</Link>
-           */}

@@ -6,6 +6,7 @@ import '../css/Formulario.css'
 
 function FormularioProveedor(props)  {
 
+  const { setProviderData, providerData } = props
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
@@ -19,7 +20,7 @@ function FormularioProveedor(props)  {
   return (
     <div className="containerFormulario">
       <h2>{palabras[0]}</h2>
-      <h1>{palabras[0]}</h1>
+      <h1>{palabras[1]}</h1>
       <input type="email" className="inputLogin" onChange={ (event) => setUserName(event.target.value)} placeholder={palabras[0]} />
       <h1>{palabras[0]}</h1>
       <input type="password" className="inputLogin" onChange={(event) => setPassword(event.target.value)} placeholder={palabras[0]} />

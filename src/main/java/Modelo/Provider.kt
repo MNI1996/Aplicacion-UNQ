@@ -2,6 +2,7 @@ package Modelo
 
 import Modelo.Enums.DiasDeSemana
 import Modelo.Enums.Horarios
+import org.json.simple.JSONObject
 import javax.persistence.*
 @Entity
 

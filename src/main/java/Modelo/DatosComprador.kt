@@ -1,5 +1,6 @@
 package Modelo
 
+import org.json.simple.JSONObject
 import javax.persistence.*
 
 
@@ -9,4 +10,5 @@ class DatosComprador(var localidad: String,
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     var id:Long = 0
+
 }
