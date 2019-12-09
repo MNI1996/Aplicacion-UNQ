@@ -10,6 +10,14 @@ export default (intl, ids) => {
           id: 'Usuario',
           defaultMessage: 'eh ta mal'
         }),
+        Logo: intl.formatMessage({
+          id: 'Logo',
+          defaultMessage: 'eh ta mal'
+        }),
+        Numero: intl.formatMessage({
+          id: 'Numero',
+          defaultMessage: 'eh ta mal'
+        }),
         Contraseña: intl.formatMessage({
           id: 'Contraseña',
           defaultMessage: 'eh ta mal'
@@ -19,7 +27,7 @@ export default (intl, ids) => {
           defaultMessage: 'eh ta mal'
         }),
         Registrar: intl.formatMessage({
-          id: 'Register',
+          id: 'Registro',
           defaultMessage: 'eh ta mal'
         }),
         Google: intl.formatMessage({

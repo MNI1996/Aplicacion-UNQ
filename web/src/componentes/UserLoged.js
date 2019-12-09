@@ -9,7 +9,7 @@ function UserLoged(props){
     
     return(
         <Fragment >            
-            { providerData ? 
+            { providerData ?
                 <div> POTOMA </div>:
                 <FormularioProveedor 
                 setProviderData={setProviderData}
