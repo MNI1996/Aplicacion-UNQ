@@ -11,11 +11,14 @@ import java.io.IOException
 
 
 class FireBaseService {
+    
+    @Value("\${spring.Firebase}")
+    val clave :String? = null
 
     fun initialize(){
         try {
             val options = FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(ClassPathResource("/KEY_FIREBASE.json").inputStream))
+                    .setCredentials(GoogleCredentials.fromStream(ClassPathResource(clave).inputStream))
                     .build()
             FirebaseApp.initializeApp(options)
             println("FireBase inizialized")
