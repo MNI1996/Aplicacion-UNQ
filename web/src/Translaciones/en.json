@@ -5,11 +5,13 @@
     "Ingreso": "Sing in",
     "Bienvenidos":"Welcome",
     "Usuario": "User",
-    "Contraseña": "password",
-    "Busqueda": "search",
+    "Contraseña": "Password",
+    "Busqueda": "Search",
     "Mail": "Mail",
-    "Direccion": "addres",
+    "Direccion": "Addres",
     "Localidad":"Location",
     "Google": "Google",
-    "LogOut": "LogOut"
+    "LogOut": "LogOut",
+    "Logo":"Icon",
+    "Numero":"Number"
 }

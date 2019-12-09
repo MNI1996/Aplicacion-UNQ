@@ -10,5 +10,7 @@
     "Mail": "Correo",
     "Direccion": "Direccion",
     "Google": "Google",
-    "LogOut": "LogOut"
+    "LogOut": "LogOut",
+    "Logo":"Logo",
+    "Numero":"Numero"
 }
