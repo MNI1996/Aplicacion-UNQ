@@ -29,8 +29,16 @@ target
 *.target
 
 KEY_FIREBASE.json
-*.json
-.json
+
+.properties
+application.properties
+
+*/resources/*
+/resources/*
+*/resources
+/resources
+resources
+
 .env
 .env.production
 

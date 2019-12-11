@@ -1,5 +1,6 @@
 package Modelo.Api
 
+import com.google.api.client.util.Value
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.auth.oauth2.GoogleCredentials
@@ -11,11 +12,14 @@ import java.io.IOException
 
 
 class FireBaseService {
+    
+    @Value("\${spring.Firebase}")
+    val clave :String? = null
 
     fun initialize(){
         try {
             val options = FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(ClassPathResource("/KEY_FIREBASE.json").inputStream))
+                    .setCredentials(GoogleCredentials.fromStream(ClassPathResource(clave).inputStream))
                     .build()
             FirebaseApp.initializeApp(options)
             println("FireBase inizialized")
