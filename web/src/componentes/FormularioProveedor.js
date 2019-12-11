@@ -4,6 +4,7 @@ import intl from './i18n-Palaras'
 import { post } from '../services/ServiceMenus'
 import 'firebase/auth'
 import { useFirebaseApp } from 'reactfire'
+import { Link } from 'react-router-dom'
 
 import '../css/Formulario.css'
 
@@ -20,6 +21,7 @@ function FormularioProveedor(props)  {
   const handleSubmit = async () => {
     firebase.auth().currentUser.getIdToken(true).then( function(idToken) {
       post('http://localhost:6009/Menu/main', idToken )
+      
       })
       .catch(error =>  console.log(error) )
   }
@@ -39,7 +41,8 @@ function FormularioProveedor(props)  {
       <h1>{palabras[4]}</h1>
       <input type="numero" className="inputLogin" onChange={(event) => setNum(event.target.value)} placeholder={palabras[4]} />
       <br />
-      <button className="inputSubmit" onClick={handleSubmit}>{palabras[0]}</button>
+      <button className="inputSubmit" onClick={handleSubmit}>{palabras[5]}</button>
+      <Link className="link" to={`/ProvProfile`}>Registrarse</Link>
     </div>  
   )
 
