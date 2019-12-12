@@ -12,6 +12,8 @@ function MenusEnLista(props)   {
   const  { menus, setMenus } = useState(['1', 'pomberito', '3', '4', '5','ssssssssssssss','rrrrrrrrrrrrrr'])
   const  { menusFiltrados, setMenusFiltrados} = useState([])
 
+ 
+
   useEffect(() => {
     setMenusFiltrados(menus)
     // getRestos()
