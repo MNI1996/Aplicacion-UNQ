@@ -2,14 +2,15 @@ import React, { Fragment, useState, useEffect } from 'react'
 import Menu from './Menu.js'
 import HeaderBar from './HeaderBar.js'
 import intl from './i18n-Palaras'
+import debounce from 'debounce'
 
 import '../css/Home.css'
 
 function MenusEnLista(props)   {
     
-  const  {busqueda, setBusqueda} = useState('')
-  const  {menus, setMenus} = useState(['1', 'pomberito', '3', '4', '5','ssssssssssssss','rrrrrrrrrrrrrr'])
-  const  {menusFiltrados, setMenusFiltrados} = useState([])
+  const  { busqueda, setBusqueda } = useState('')
+  const  { menus, setMenus } = useState(['1', 'pomberito', '3', '4', '5','ssssssssssssss','rrrrrrrrrrrrrr'])
+  const  { menusFiltrados, setMenusFiltrados} = useState([])
 
   useEffect(() => {
     setMenusFiltrados(menus)
@@ -29,7 +30,8 @@ function MenusEnLista(props)   {
   } 
 
   const handleChangeSearch = (event) => {
-      setMenusFiltrados(menus.filter(menu => menu.includes(event.target.value)))
+      debounce(setMenusFiltrados(menus.filter(menu => menu.includes(event.target.value)))
+        ,200)
 
       // getResto({ name: name }).then(resto => this.setState({ restosFiltrados: resto }))
       //const newRestos = this.state.restos.filter( resto => resto.name.toLowerCase().includes(event.target.value.toLowerCase()));
@@ -37,7 +39,6 @@ function MenusEnLista(props)   {
 
   }
 
-  console.log(props.intl)
   const palabras = intl(props.intl, ['Busqueda'])
   const Busqueda = palabras[0]
   
@@ -46,7 +47,7 @@ function MenusEnLista(props)   {
         <HeaderBar />
         <input type="text" className="inputsearch" name="busqueda" onChange={event => handleChangeSearch(event)} placeholder={Busqueda} />
           <ul className="listMenu">
-            { showAllMenus() }   
+            { showAllMenus() }
           </ul>
       </Fragment>
     )
