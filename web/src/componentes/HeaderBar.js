@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom' 
+
+import intl from './i18n-Palaras'
 import { injectIntl } from 'react-intl'
+
 import { useFirebaseApp, useUser } from 'reactfire'
 
 import '../css/Header.css'
+import { placeholder } from '@babel/types'
 
 function HeaderBar(props){
     
@@ -14,25 +18,15 @@ function HeaderBar(props){
     const logOut = async () => {
         firebase.auth().signOut()
       }
-    const intl = props.intl
-    const Viandas = intl.formatMessage({
-    id: 'Viandas',
-    defaultMessage: 'eh ta mal'
-    })
-    const LogOut = intl.formatMessage({
-        id: 'LogOut',
-        defaultMessage: 'eh ta mal'
-    })
+    const palabras = intl()
     return(
         <div className="header">
-            <Link className="logo" to={'/'}>{Viandas}</Link>
+            <Link className="logo" to={'/'}>{palabras['Viandas']}</Link>
             <div className="header-right">
                 { user ?
-                <>
-                <img className="imagen" src={user.photoURL} />
-                <button className="header-logOut" onClick={logOut}>{ LogOut }</button>
-                </>
-                : 'mandioca' }
+                <><img className="imagen" src={user.photoURL} />
+                <button className="header-logOut" onClick={ logOut }>{ palabras['LogOut'] }</button>
+                </>: 'mandioca' }
             </div>
         </div>
     )

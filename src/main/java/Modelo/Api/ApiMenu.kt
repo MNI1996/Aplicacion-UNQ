@@ -1,7 +1,6 @@
 package Modelo.Api
 
 import Modelo.Dispachers.DispacherMenu
-import com.google.firebase.auth.FirebaseAuth
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 

@@ -9,13 +9,13 @@ import '../css/Login.css'
 
 function LogIn (props)  {
   
-  const {setClientData, setProviderData} = props
+  const { setClientData, setProviderData } = props
 
   
   const firebase = useFirebaseApp()
   const logInGoogle = async () => {
     const provider = new firebase.auth.GoogleAuthProvider()
-    await logueo(firebase, provider).then(response => setDatas(response)).catch(firebase.auth().signOut())
+    await logueo(firebase, provider).then(response => setDatas(response))
   } 
 
   const setDatas = (response) => {
@@ -24,15 +24,14 @@ function LogIn (props)  {
     return response
   }
 
-  const palabras = 
-    intl(props.intl, ['Bienvenidos', 'Google'])
+  const palabras = intl()
 
   return (
     <div className="containerLogin">
       <div className="login">
-          <h2>{palabras[0]}</h2>
+          <h2>{palabras['Bienvenidos']}</h2>
           <br/>
-          <button className="inputSubmit" onClick={logInGoogle}>{palabras[1]}</button>
+          <button className="inputSubmit" onClick={logInGoogle}>{palabras['Google']}</button>
           <br />
       </div>
     </div>  

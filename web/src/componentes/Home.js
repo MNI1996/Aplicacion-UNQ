@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from 'react'
-import UserLoged from './UserLoged'
-import HeaderBar from './HeaderBar'
 import { useFirebaseApp, useUser } from 'reactfire'
 
+import HeaderBar from './HeaderBar'
 import Login from './login'
+import UserLoged from './UserLoged'
 
 
 function Home(props){

@@ -8,7 +8,7 @@ class ClientUser (var name: String,
                   var mail: String,
                   var telefono: String?)
 {
-    @ManyToOne(targetEntity=DatosComprador::class)
+    @ManyToOne(targetEntity=DatosComprador::class,cascade = [(CascadeType.ALL)])
     var datosComprador: DatosComprador? = null
     @ManyToOne(targetEntity=Provider::class)
     var datosProvider: Provider? = null

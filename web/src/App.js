@@ -14,9 +14,8 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" render={props => <div><Home {...props} /> </div>}/>
-        {/* <PrivateRoute*/ }
-          <PrivateRoute exact path="/ProvProfile" component={props => <div> <ProviderP {...props}/> </div>}/>
-          <Route exact path="/Menus" component={props => <div><ListaMenus {...props} /> </div>}/>
+          <PrivateRoute  exact path="/ProvProfile" component={props => <div> <ProviderP {...props}/> </div>}/>
+          <PrivateRoute exact path="/Menus" component={props => <div><ListaMenus {...props} /> </div>}/>
           <Route exact path="/Lenguaje" component={Lenguaje}/>
         </Switch>
       </BrowserRouter>

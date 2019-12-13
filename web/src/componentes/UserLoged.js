@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+
 import FormularioComprador from './FormularioComprador'
 import FormularioProveedor from './FormularioProveedor'
 
@@ -14,7 +15,6 @@ function UserLoged(props){
                 <FormularioProveedor 
                 setProviderData={setProviderData}
                 providerData={providerData} /> }
-            
             { clientData ? 
                 <div>YACOMO</div>:
                 <FormularioComprador 

@@ -28,6 +28,7 @@ class DispacherUser () {
 
     fun setCompradorData(user: UserRecord ,datosComprador: DatosComprador): ClientUser {
         var user = dao.findByMail(user.email)
+        println(user)
         user.datosComprador = datosComprador
         dao.save(user)
         return user
