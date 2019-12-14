@@ -15,5 +15,7 @@ jobs:
         only:
           - master
       jdk: oraclejdk8
+      before_install:
+        - sudo apt-get update
       script:
         - "mvn test -B"
