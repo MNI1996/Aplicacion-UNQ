@@ -1,8 +1,19 @@
-language: java
-branches:
-  only:
-    - master
-jdk:
-  - oraclejdk8
 sudo: True
+
+stages:
+  - Test
+  
+  -
 dist: trusty
+
+jobs:
+  include:
+    -
+      stage: Test
+      language: java
+      branches:
+        only:
+          - master
+      jdk: oraclejdk8
+      script:
+        - "mvn test -B"
