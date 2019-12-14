@@ -1,5 +1,6 @@
 package Modelo.Api
 
+import FireBaseService
 import Modelo.ClientUser
 import Modelo.DatosComprador
 import Modelo.Dispachers.DispacherUser
@@ -17,11 +18,10 @@ class ApiClientUser {
 
     @RequestMapping("/LogUser", method = [RequestMethod.POST])
     fun main(@RequestHeader("X-Firebase-ID-Token") token: String): ClientUser {
-        var userData = FireBaseService().veryfiToken(token)
-        var user = FireBaseService().getUserData(userData.uid)
-        var data = Clientes.getDataUser(user)
-        println(data)
-        return data
+        var userToken = FireBaseService().veryfiToken(token)
+        var userData = FireBaseService().getUserData(userToken.uid)
+        var user = Clientes.getDataUser(userData)
+        return user
     }
 
     @RequestMapping("/CompradorData", method = [RequestMethod.POST])
@@ -29,7 +29,6 @@ class ApiClientUser {
         var userData = FireBaseService().veryfiToken(token)
         var user = FireBaseService().getUserData(userData.uid)
         var data = Clientes.setCompradorData(user,datosComprador)
-        println(data)
         return data
     }
 
@@ -38,7 +37,6 @@ class ApiClientUser {
         var userData = FireBaseService().veryfiToken(token)
         var user = FireBaseService().getUserData(userData.uid)
         var data = Clientes.setProvedorData(user,datosProvedor)
-        println(data)
         return data
     }
 }
