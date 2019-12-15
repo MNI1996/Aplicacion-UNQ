@@ -18,4 +18,4 @@ jobs:
       before_install:
         - sudo apt-get update
       script:
-        - "mvn test -B"
+        - mvn test -B
