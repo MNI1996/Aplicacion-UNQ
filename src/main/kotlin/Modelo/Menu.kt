@@ -41,7 +41,8 @@ class Menu (
 
     fun itsOver():Boolean{
         var hoy= DateTime.now()
-         var result=hoy.toLocalDate() == duracionMenu.toLocalDate()
+
+         var result= duracionMenu.isAfter(hoy)
        return(result)
     }
 
