@@ -1,4 +1,4 @@
-import { hereMap } from './ServiceMenus'
+import { hereMap } from './Service'
 
 const url = 'http://autocomplete.geocoder.api.here.com/6.2/suggest.json'
 const urlGeo = 'https://geocoder.api.here.com/6.2/geocode.json'
@@ -12,8 +12,6 @@ const GeoParams = (params) => (
   {'app_id': 'Boze0cQ9ZbYPqj62AV4J',
   'app_code': 'f8qaglUm2Rwtq84mZNtTvQ',
     ...params})
-
-     
 
 export const onSearch = async (ubicacion) => {
   return await hereMap(url, sugentionParams({'query': ubicacion, 'maxresults':20 ,'country':'ARG'})).catch(error => handleError(error))}

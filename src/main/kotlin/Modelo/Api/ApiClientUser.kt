@@ -17,7 +17,7 @@ class ApiClientUser {
     lateinit var Clientes: DispacherUser
 
     @RequestMapping("/LogUser", method = [RequestMethod.POST])
-    fun main(@RequestHeader("X-Firebase-ID-Token") token: String): ClientUser {
+    fun LogUser(@RequestHeader("X-Firebase-ID-Token") token: String): ClientUser {
         var userToken = FireBaseService().veryfiToken(token)
         var userData = FireBaseService().getUserData(userToken.uid)
         var user = Clientes.getDataUser(userData)

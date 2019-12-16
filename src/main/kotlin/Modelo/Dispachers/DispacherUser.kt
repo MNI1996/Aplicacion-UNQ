@@ -20,8 +20,7 @@ class DispacherUser () {
         if( !dao.existsClientUserByMail(user.email)){
             var newUser = ClientUser(user.displayName, user.email, user.phoneNumber)
             dao.save(newUser)
-            println("entro a crear usuario")
-        }
+            println("entro a crear usuario")}
         var user = dao.findByMail(user.email)
         return user
     }

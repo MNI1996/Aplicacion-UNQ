@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { injectIntl } from 'react-intl'
 import intl from './i18n-Palaras'
-import { post } from '../services/ServiceMenus'
+import { post } from '../services/Service'
 import 'firebase/auth'
 import { useFirebaseApp } from 'reactfire'
 import { Link } from 'react-router-dom'
+
+import { UserContext } from './UserContext'
+
 
 import '../css/Formulario.css'
 
 function FormularioProveedor(props)  {
 
-  const { setProviderData, providerData } = props
+  const { setProviderData, providerData } = useContext(UserContext)
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [logo, setIcon]         = useState('')

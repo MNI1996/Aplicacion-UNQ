@@ -1,25 +1,30 @@
-import React, { Suspense } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React, { Suspense, useState } from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import './css/App.css'
+import { UserContext } from './componentes/UserContext'
 
-import Lenguaje from './componentes/Lenguaje'
-import Home from './componentes/Home'
-import ListaMenus from './componentes/VentanaDeCompra'
-import ProviderP from './componentes/PerfilProovedor'
 import PrivateRoute from './componentes/PrivateRoute'
+import LogIn from './componentes/login'
+import Home from './componentes/Home'
+import ProviderP from './componentes/PerfilProovedor'
+import ListaMenus from './componentes/VentanaDeCompra'
+import Lenguaje from './componentes/Lenguaje'
 
-function App() {
+function App(props) {
+
   return (
     <Suspense fallback={Lenguaje}>
-      <BrowserRouter>
         <Switch>
-          <Route exact path="/" render={props => <div><Home {...props} /> </div>}/>
-          <PrivateRoute  exact path="/ProvProfile" component={props => <div> <ProviderP {...props}/> </div>}/>
-          <PrivateRoute exact path="/Menus" component={props => <div><ListaMenus {...props} /> </div>}/>
-          <Route exact path="/Lenguaje" component={Lenguaje}/>
+          <Route exact path="/" render={props => <div><LogIn {...props} /> </div>}/>
+          <PrivateRoute path="/Home" render={props => <div><Home {...props} /> </div>}/>
+          {/* <PrivateRoute path="/ProvProfile" render={props => <div> <ProviderP {...props}/> </div>}/> */}
+          <PrivateRoute path="/ProvProfile" render={props => <div> <ProviderP {...props}/> </div>}/>
+          <PrivateRoute path="/Menus" render={props => <div><ListaMenus {...props} /> </div>}/>
+          <Route exact path="/Lenguaje" render={Lenguaje}/>
+          <Redirect to="/"/>
         </Switch>
-      </BrowserRouter>
     </Suspense>
+        
   )}
 
 export default App

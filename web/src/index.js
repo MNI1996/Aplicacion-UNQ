@@ -1,12 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
+import { BrowserRouter } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
-import { IntlProvider } from 'react-intl'
+
+import App from './App'
+
+
 import { FirebaseAppProvider } from 'reactfire'
+
+import { IntlProvider } from 'react-intl'
 import mensajesEn from './Translaciones/en.json'
 import mensajesEs from './Translaciones/es.json'
+
+import './index.css'
 
 const lenguaje = {
     'en': mensajesEn ,
@@ -22,10 +28,11 @@ const navegadorLengusje = navigator.language.split(/[-_]/)[0]
 //pagina de compra
 //menu de provedor
 //crear menu
-ReactDOM.render(
-                <IntlProvider locale={navegadorLengusje} messages={lenguaje[navegadorLengusje]}>
+ReactDOM.render(<IntlProvider locale={navegadorLengusje} messages={lenguaje[navegadorLengusje]}>
                     <FirebaseAppProvider firebaseConfig={JSON.parse(process.env.REACT_APP_FIREBASE)} >
-                        <App />
+                        <BrowserRouter>
+                                <App /> 
+                        </BrowserRouter>
                     </FirebaseAppProvider>
                 </IntlProvider>
                 , document.getElementById('root'))

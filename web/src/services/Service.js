@@ -16,7 +16,7 @@ async function callToServer(method, url, token, params) {
       'X-Firebase-ID-Token': token,
       'content-type': 'application/json'
     }, body: params, json: true }
-  return await rp(options).catch((error) => printError(error))}
+  return await rp(options)}
 
 export async function hereMap( url, params) {
   let options = { uri: url, qs: params, json: true }
@@ -24,5 +24,5 @@ export async function hereMap( url, params) {
 
 function printError(error){
   console.log('algo salio mal', error)  
-  return error 
+  throw(error)
 }

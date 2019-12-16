@@ -18,4 +18,5 @@ jobs:
       before_install:
         - sudo apt-get update
       script:
+        - mvn clean install
         - mvn test -B
