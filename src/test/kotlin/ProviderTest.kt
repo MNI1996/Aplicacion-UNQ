@@ -42,6 +42,7 @@ class ProviderTest{
                 ,100,true)
         assertFails(" el menu no cumple con los requerimientos minimos de aceptacion",{prov.addMenu(menu)})
     }
+
     @Test
     fun quitoMenuCaducoYNoPuedo(){
         var menu= Menu("arroz","arroz blancooooooooooooooo", Categoria.Vegano
