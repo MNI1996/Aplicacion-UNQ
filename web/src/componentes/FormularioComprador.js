@@ -17,22 +17,14 @@ function FormularioComprador(props)  {
     'borderBottom': '#ccc 2px solid', padding: '2%', width:'250px',
     color:'#AAAAAA', margin:'2% 0% 5% 2%', font:'1em', 'borderRadius':'4px' }
 
-  const [ dataComprador, setDataComprador ] = useState(null)
+  const { dataComprador, setDataComprador } = props
   const [ searchUbicacion, setsearchUbicacion ] = useState('')
   const [ ubicaciones, setUbicaciones ] = useState([])
   const [ ubicacion, setUbicacion ] = useState(null)
   const history = useHistory()
   const palabras = intl()
   const firebase = useFirebaseApp()
-
-
-  useEffect( () => verifyLogIn(firebase).then(response => setCompradorData(response))
-    .catch(error => history.push('/')) ,[])
-
-  const setCompradorData = ( response ) => {
-    setDataComprador({datosComprador: response.datosComprador})
-    // if(!!dataComprador.calle)  setUbicacion(jsonToDireccion(dataComprador)) 
-  }
+  
     
   const verify = async () => { onSearchgeoCode(searchUbicacion).then(response =>  
     {if(response.Response.View[0].Result[0].MatchLevel == 'houseNumber')

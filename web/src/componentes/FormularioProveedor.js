@@ -1,25 +1,28 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { injectIntl } from 'react-intl'
 import intl from './i18n-Palaras'
+
 import { post } from '../services/Service'
+import { verifyLogIn } from '../services/ServiceBack'
+
 import 'firebase/auth'
 import { useFirebaseApp } from 'reactfire'
-import { Link } from 'react-router-dom'
 
-import { UserContext } from './UserContext'
+import { useHistory } from 'react-router-dom'
 
 
 import '../css/Formulario.css'
 
 function FormularioProveedor(props)  {
 
-  const { setProviderData, providerData } = useContext(UserContext)
+  const { providerData, setProviderData } = props
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [logo, setIcon]         = useState('')
   const [numero, setNum]        = useState('')
-  
+
   const firebase = useFirebaseApp()
+
 
   const handleSubmit = async () => {
     firebase.auth().currentUser.getIdToken(true).then( function(idToken) {
@@ -31,7 +34,7 @@ function FormularioProveedor(props)  {
 
   const palabras =intl()
 
-  return (
+  return ( !!providerData ?
     <div className="containerFormulario">
       <h2>{palabras['Bienvenidos']}</h2>
       <h1>{palabras['Usuario']}</h1>
@@ -45,7 +48,7 @@ function FormularioProveedor(props)  {
       <br />
       <button className="inputSubmit" onClick={handleSubmit}>{palabras['Ingreso']}</button>
       {/* <Link className="link" to={`/ProvProfile`}>Registrarse</Link> */}
-    </div>  
+    </div>  : <div></div>
   )
 
 }

@@ -10,25 +10,25 @@ import '../css/Header.css'
 
 function HeaderBar(props){
     
-    const firebase = useFirebaseApp()
+  const firebase = useFirebaseApp()
 
-    const user = useUser()
+  const user = useUser()
 
-    const logOut = async () => {
-        firebase.auth().signOut()
-      }
-    const palabras = intl()
-    return(
-        <div className="header">
-            <Link className="logo" to={'/'}>{palabras['Viandas']}</Link>
-            <div className="header-right">
-                { user ?
-                <><img className="imagen" src={user.photoURL} />
-                <button className="header-logOut" onClick={ logOut }>{ palabras['LogOut'] }</button>
-                </>: 'mandioca' }
-            </div>
-        </div>
-    )
+  const logOut = async () => {
+    firebase.auth().signOut()
+    }
+  const palabras = intl()
+  return(
+    <div className="header">
+      <Link className="logo" to={'/'}>{palabras['Viandas']}</Link>
+      <div className="header-right">
+      { user ?
+        <><img className="imagen" src={user.photoURL} />
+        <button className="header-logOut" onClick={ logOut }>{ palabras['LogOut'] }</button></>
+        : <div></div>  }
+      </div>
+    </div>
+  )
 }
 
 
