@@ -8,34 +8,22 @@ import javax.persistence.*
 @Entity
 class Menu (
         var name: String,
-
         var description: String,
-
         @Enumerated(EnumType.STRING)
         var categoria: Categoria,
-
         var valorDelivery: Int,
-
         var duracionMenu: DateTime,
-
         @Enumerated(EnumType.STRING)
         var horarios: Horarios,
-
         var tiempoEspera: DateTime,
-
         var precio: Double=0.0,
-
         @ManyToOne(targetEntity=Promocion::class)
         var primeraPromocion: Promocion,
-
         @ManyToOne(targetEntity=Promocion::class)
         var segundaPromocion: Promocion?,
-
         var stock:Int,
-
-
-
         var enabled: Boolean
+
         ) {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

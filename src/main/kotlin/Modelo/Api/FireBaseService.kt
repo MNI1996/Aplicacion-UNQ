@@ -1,4 +1,4 @@
-package Modelo.Api
+package Api
 
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
@@ -20,7 +20,7 @@ class FireBaseService() {
 
     fun initialize(){
         try {
-            println(clave + "pene")
+            println(clave)
             val options = FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(ClassPathResource("/KEY_FIREBASE.json").inputStream))
                     .build()
