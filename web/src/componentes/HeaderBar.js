@@ -7,7 +7,6 @@ import { injectIntl } from 'react-intl'
 import { useFirebaseApp, useUser } from 'reactfire'
 
 import '../css/Header.css'
-import { placeholder } from '@babel/types'
 
 function HeaderBar(props){
     

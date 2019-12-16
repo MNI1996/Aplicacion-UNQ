@@ -1,25 +1,16 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 
 import FormularioComprador from './FormularioComprador'
 import FormularioProveedor from './FormularioProveedor'
 
+import { UserContext } from './UserContext'
 
 function UserLoged(props){
 
-    const { setClientData, clientData, setProviderData, providerData } = props
-    
     return(
         <Fragment >            
-            { providerData ?
-                <div> POTOMA </div>:
-                <FormularioProveedor 
-                setProviderData={setProviderData}
-                providerData={providerData} /> }
-            { clientData ? 
-                <div>YACOMO</div>:
-                <FormularioComprador 
-                setClientData={setClientData}
-                clientData={clientData} /> }
+            { <FormularioProveedor /> }
+            { <FormularioComprador /> }
         </Fragment>
     )
     
