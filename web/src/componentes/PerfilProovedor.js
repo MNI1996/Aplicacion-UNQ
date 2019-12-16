@@ -17,19 +17,14 @@ return(<Fragment>
 
 function MenusEnLista(props)   {
 
-  const palabras = intl(props.intl, ['Busqueda'])
-  const Busqueda = palabras[0]
+  const palabras = intl()
+  const Busqueda = palabras['Busqueda']
     
-    const  {busqueda, setBusqueda} = useState('')
-    const  {menus, setMenus} = useState(['1', 'pomberito', '3', '4', '5','ssssssssssssss','rrrrrrrrrrrrrr'])
-    const  {menusFiltrados, setMenusFiltrados} = useState([])
+    const  [busqueda, setBusqueda] = useState('')
+    const  [menus, setMenus] = useState(props.provider.menus)
+    const  [menusFiltrados, setMenusFiltrados] = useState([])
   
-    //useEffect(() => {
-    //  setMenusFiltrados(menus)
-      // getRestos()
-      //     .then(response => this.setState({ restos: response, restosFiltrados: response }))
-      //     .catch(error => console.log(error));
-   // })
+   
   
    const menusFiltrados1= ['1', 'pomberito', '3', '4', '5','ssssssssssssss','rrrrrrrrrrrrrr']
     const showAllMenus = () => {
@@ -43,12 +38,7 @@ function MenusEnLista(props)   {
     } 
   
     const handleChangeSearch = (event) => {
-        setMenusFiltrados(menus.filter(menu => menu.includes(event.target.value)))
-  
-        // getResto({ name: name }).then(resto => this.setState({ restosFiltrados: resto }))
-        //const newRestos = this.state.restos.filter( resto => resto.name.toLowerCase().includes(event.target.value.toLowerCase()));
-        //this.setState({ restosFiltrados: [newRestos]});
-  
+        setMenusFiltrados(menus.filter(menu => menu.includes(event.target.value)))  
     }
 
     return (<div>
@@ -63,19 +53,13 @@ function MenusEnLista(props)   {
   
   function OrdenesEnLista(props)   {
 
-    const palabras = intl(props.intl, ['Busqueda'])
-    const Busqueda = palabras[0]
+    const palabras = intl()
+    const Busqueda = palabras ['Busqueda']
       
-      const  {busqueda, setBusqueda} = useState('')
-      const  {ordenes, setOrdenes} = useState(['1', 'pomberito', '3', '4', '5','ssssssssssssss','rrrrrrrrrrrrrr'])
-      const  {ordenesFiltrados, setOrdenesFiltrados} = useState([])
+      const  [busqueda, setBusqueda ]= useState('')
+      const  [ordenes, setOrdenes] = useState(props.provider.history)
+      const  [ordenesFiltrados, setOrdenesFiltrados] = useState([])
     
-      //useEffect(() => {
-      //  setMenusFiltrados(menus)
-        // getRestos()
-        //     .then(response => this.setState({ restos: response, restosFiltrados: response }))
-        //     .catch(error => console.log(error));
-     // })
     
      const ordenesFiltrados1= ['1', 'pomberito', '3', '4', '5','ssssssssssssss','rrrrrrrrrrrrrr']
       const showAllOrdenes = () => {
@@ -91,9 +75,6 @@ function MenusEnLista(props)   {
       const handleChangeSearch = (event) => {
         setOrdenesFiltrados(ordenes.filter(menu => menu.includes(event.target.value)))
     
-          // getResto({ name: name }).then(resto => this.setState({ restosFiltrados: resto }))
-          //const newRestos = this.state.restos.filter( resto => resto.name.toLowerCase().includes(event.target.value.toLowerCase()));
-          //this.setState({ restosFiltrados: [newRestos]});
     
       }
   

@@ -6,8 +6,15 @@ function Menu(props){
 
         const { menu } = props  
         return(
-            <div className= 'menu'>
-                <h1> {props.menu} </h1>
+            <div className= 'container'>
+                <div className='row'>
+                    <img src={props.menu.url}></img>
+                </div>
+                <div className='row'>
+                    <h1> {props.menu} </h1>
+                    <h2>{props.menu.precio}</h2>
+                    <p>{props.menu.descripcion}</p>
+                </div>                
             </div>
         )
     }
