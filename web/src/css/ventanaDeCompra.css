@@ -1,0 +1,38 @@
+.container {
+  overflow: hidden;
+  list-style-type: none;
+}
+ 
+.commentBox, .next, .previous, .break-me  {
+  height: 25px;
+  float: left;
+  margin-right: 0px;
+  border-right: 1px solid #aaa;
+  padding: 0 20px;
+}
+ 
+.commentBox:last-child, .next:last-child, .previous:last-child, .break-me:last-child {
+  border-right: none;
+}
+ 
+.commentBox a, .next a, .previous a, .break-me a {
+  text-decoration: none;
+  color: #ccc;
+  text-transform: uppercase;
+ 
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.commentBox a:hover, .next a:hover, .previous a:hover, .break-me a:hover {
+  color: #666;
+}
+ 
+.commentBox.active a {
+  font-weight: bold;
+  color: #333;
+}
+

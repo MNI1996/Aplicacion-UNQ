@@ -8,32 +8,10 @@ import intl from './i18n-Palaras'
 
 import ReactPaginate from 'react-paginate'
 
-import '../css/Home.css'
+import '../css/ventanaDeCompra.css'
 
 function VenatanaDeCompra(props)   {
-
-  // useEffect(() => {
-  //   setMenusFiltrados(menus)
-    // getRestos()
-    //     .then(response => this.setState({ restos: response, restosFiltrados: response }))
-    //     .catch(error => console.log(error));
-  // },[])  
-
   
-  // const showAllMenus = () => {
-  //   if (menusFiltrados) {
-  //     return menusFiltrados.map(menu => (<Menu key={menu} menu={menu} />))}
-  //   return ( <div className="containerError">
-  //       <p>No se encontró un restaurant con ese nombre</p></div>)} 
-
-  // const handleChangeSearch = (event) => {
-  //     debounce(setMenusFiltrados(menus.filter(menu => menu.includes(event.target.value)))
-  //       ,200)
-      // getResto({ name: name }).then(resto => this.setState({ restosFiltrados: resto }))
-      //const newRestos = this.state.restos.filter( resto => resto.name.toLowerCase().includes(event.target.value.toLowerCase()));
-      //this.setState({ restosFiltrados: [newRestos]});
-    // }
-
   const palabras = intl()
   
   return ( <VenatanaDeCompraBody palabras={palabras} /> )
@@ -46,12 +24,6 @@ class VenatanaDeCompraBodyBase extends Component{
     this.menusFiltrados = []
   }
 
-  showAllMenus = () => {
-    if (this.menusFiltrados) {
-      return this.menusFiltrados.map(menu => (<Menu key={menu} menu={menu} />))}
-    return ( <div className="containerError">
-        <p>No se encontró un restaurant con ese nombre</p></div>)}
-
   handleChangeSearch = () => {}
   
 
@@ -60,7 +32,18 @@ class VenatanaDeCompraBodyBase extends Component{
       <input type="text" className="inputsearch" name="busqueda" onChange={event => 
         this.handleChangeSearch(event)} placeholder={this.palabras['busqueda']} />
       <MenusEnLista data={[]} />
-      <ReactPaginate pageCount={4} pageRangeDisplayed={4} marginPagesDisplayed={2} />
+      <ReactPaginate containerClassName='container' pageClassName='commentBox' 
+          previousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={17}//this.state.pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={9}//this.handlePageClick}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+        /> 
       </>
       )}
 }
@@ -68,7 +51,8 @@ class VenatanaDeCompraBodyBase extends Component{
 export class MenusEnLista extends Component {
 
   render() {
-    let MenusEnLista = this.props.data.map( (data) => {
+
+    let MenusEnLista = (this.props.data ? this.props.data.map( (data) => {
       return <div key={data.index}>
         <div className='row'>
             <img src={data.url}></img>
@@ -78,8 +62,8 @@ export class MenusEnLista extends Component {
           <h2>{data.precio}</h2>
           <p>{data.descripcion}</p>
         </div>
-      </div>
-    })
+      </div>}): <div className="containerError"> 
+    <p>No se encontró un restaurant con ese nombre</p></div> )
 
     return (
       <div className= 'container'>
