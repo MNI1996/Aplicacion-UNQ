@@ -1,30 +1,31 @@
-import React, { Suspense, useState } from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import React, { Component, Suspense } from 'react'
+import { Redirect, Route, Switch, BrowserRouter, Router } from 'react-router-dom'
 import './css/App.css'
-import { UserContext } from './componentes/UserContext'
 
+import HeaderBar from './componentes/HeaderBar'
 import PrivateRoute from './componentes/PrivateRoute'
 import LogIn from './componentes/login'
 import Home from './componentes/Home'
 import ProviderP from './componentes/PerfilProovedor'
 import ListaMenus from './componentes/VentanaDeCompra'
-import Lenguaje from './componentes/Lenguaje'
 
-function App(props) {
+import * as ROUTES from './constant/routes'
 
-  return (
-    <Suspense fallback={Lenguaje}>
-        <Switch>
-          <Route exact path="/" render={props => <div><LogIn {...props} /> </div>}/>
-          <PrivateRoute path="/Home" render={props => <div><Home {...props} /> </div>}/>
-          {/* <PrivateRoute path="/ProvProfile" render={props => <div> <ProviderP {...props}/> </div>}/> */}
-          <PrivateRoute path="/ProvProfile" render={props => <div> <ProviderP {...props}/> </div>}/>
-          <PrivateRoute path="/Menus" render={props => <div><ListaMenus {...props} /> </div>}/>
-          <Route exact path="/Lenguaje" render={Lenguaje}/>
-          <Redirect to="/"/>
-        </Switch>
+const App = () => {
+    return ( 
+    <Suspense fallback={<div></div>}>
+      <BrowserRouter>
+        <div>
+          <HeaderBar/>
+          <hr />
+          <Route exact path={ROUTES.LANDING} component={props => <div><LogIn {...props} /> </div>}/>
+          <PrivateRoute path={ROUTES.HOME} component={props => <div><Home {...props} /> </div>}/>
+          <PrivateRoute path={ROUTES.PROVPROFILE} component={props => <div> <ProviderP {...props}/> </div>}/>
+          <PrivateRoute path={ROUTES.MENUS} component={props => <div><ListaMenus {...props} /> </div>}/>
+          <Redirect to={ROUTES.LANDING}/>
+        </div>
+      </BrowserRouter>
     </Suspense>
-        
   )}
 
-export default App
+export default (App)

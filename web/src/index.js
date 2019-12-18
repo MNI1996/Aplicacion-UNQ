@@ -30,9 +30,7 @@ const navegadorLengusje = navigator.language.split(/[-_]/)[0]
 //crear menu
 ReactDOM.render(<IntlProvider locale={navegadorLengusje} messages={lenguaje[navegadorLengusje]}>
                     <FirebaseAppProvider firebaseConfig={JSON.parse(process.env.REACT_APP_FIREBASE)} >
-                        <BrowserRouter>
-                                <App /> 
-                        </BrowserRouter>
+                        <App /> 
                     </FirebaseAppProvider>
                 </IntlProvider>
                 , document.getElementById('root'))

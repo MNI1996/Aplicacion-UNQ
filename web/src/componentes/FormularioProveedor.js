@@ -54,4 +54,4 @@ function FormularioProveedor(props)  {
 }
 
  
-export default injectIntl(FormularioProveedor)
+export default (FormularioProveedor)

@@ -13,8 +13,7 @@ export async function logueo(firebase, provider){
 
 export async function setDireccion(firebase, direccion){
   return await firebase.auth().currentUser.getIdToken(true).then( idToken => {
-    return post(url + '/Client/CompradorData', idToken, direccion )}).catch(error => 
-      handleLogError(error))
+    return post(url + '/Client/CompradorData', idToken, direccion )})
   }
 
 export async function verifyLogIn(firebase){

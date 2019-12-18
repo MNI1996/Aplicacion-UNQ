@@ -1,39 +1,55 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState, Component } from 'react'
 import { useFirebaseApp } from 'reactfire'
 import { withRouter } from 'react-router-dom'
 
-import HeaderBar from './HeaderBar'
-import UserLoged from './UserLoged'
+import { injectIntl } from 'react-intl'
+import intl from './i18n-Palaras'
 
-import { useHistory } from 'react-router-dom'
+
 import { verifyLogIn } from '../services/ServiceBack'
 
-import FormularioComprador from './FormularioComprador'
+import * as ROUTES from '../constant/routes'
+
+import FormularioComprador, { FormularioCompradorClass }  from './FormularioComprador'
 import FormularioProveedor from './FormularioProveedor'
 
 function Home(props){
     
-  const [ providerData, setProviderData ] = useState(null)
-  const [ dataComprador, setDataComprador ] = useState(null)
   const firebase = useFirebaseApp()
-  const history = useHistory()
-
-  useEffect( () => verifyLogIn(firebase).then(response => setData(response))
-  .catch(error => history.push('/')) ,[])
-
-  const setData = ( datos ) => {
-    setProviderData({datosComprador: datos.datosComprador})
-    setDataComprador({datosComprador: datos.datosProvider})
-  }
+  const palabras = intl()
   
-  return(
-    <Fragment>
-      <HeaderBar />
-      <FormularioProveedor providerData={providerData} setProviderData={setProviderData} /> 
-      <FormularioComprador dataComprador={dataComprador} setDataComprador={setDataComprador} />
-    </Fragment>
-  )
-    
+  return(<HomeBody firebase={firebase} palabras={palabras} />)
 }
 
-export default (Home)
+class HomeBodyBase extends Component{
+  
+  constructor(props){
+    super(props)
+    this.history = props.history
+    this.firebase = props.firebase
+    this.datosUsusario = {}
+    this.palabras = props.palabras
+  }
+  
+  UNSAFE_componentWillMount(){ verifyLogIn(this.firebase).then(response => 
+    {this.datosUsusario = response;console.log(response)})
+    .catch(response => this.handleLogError(this.firebase,response))}
+
+  handleLogError = (firebase, error) => {
+    firebase.auth().signOut()
+    this.history.push(ROUTES.LANDING)}
+    
+  render(){
+    return(
+      <div>
+        <FormularioProveedor providerData={{data: this.datosUsusario.datosProvider}} history={this.history} /> 
+        <FormularioCompradorClass dataComprador={{data: this.datosUsusario.datosComprador}} firebase={this.firebase} history={this.history} palabras={this.palabras} />
+      </div>)}
+}
+
+const HomeBody = injectIntl(withRouter(HomeBodyBase))
+
+
+export default Home
+
+export { HomeBody }

@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "@types/node": "^12.12.17",
-    "debounce": "^1.2.0",
     "firebase": "^7.6.0",
     "leaflet": "^1.6.0",
+    "lodash.debounce": "^4.0.8",
     "nativescript-directions": "^1.3.1",
     "rc-here-maps": "^1.1.8",
     "react": "^16.12.0",
@@ -14,6 +14,7 @@
     "react-dom": "^16.12.0",
     "react-intl": "^3.9.2",
     "react-leaflet": "^2.6.1",
+    "react-paginate": "^6.3.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
     "reactfire": "^2.0.0",
