@@ -1,11 +1,13 @@
 package Modelo.Dispachers
 
-import Modelo.ClientUser
+import Modelo.*
 import Modelo.Daos.DaoUser
-import Modelo.DatosComprador
-import Modelo.Provider
+import Modelo.Enums.Categoria
+import Modelo.Enums.DiasDeSemana
+import Modelo.Enums.Horarios
 import com.google.firebase.auth.FirebaseToken
 import com.google.firebase.auth.UserRecord
+import org.joda.time.DateTime
 import org.json.simple.JSONObject
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
@@ -39,4 +41,8 @@ class DispacherUser () {
         dao.save(user)
         return user
     }
+
+
+
+
 }
