@@ -16,6 +16,11 @@ export async function setDireccion(firebase, direccion){
     return post(url + '/Client/CompradorData', idToken, direccion )})
   }
 
+export async function setProviderData(firebase, data){
+  return await firebase.auth().currentUser.getIdToken(true).then( idToken => {
+    return post(url + '/Client/', idToken, data )})
+  }
+
 export async function verifyLogIn(firebase){
   return await firebase.auth().currentUser.getIdToken(true).then((idToken) => { 
     return post(url + '/Client/LogUser', idToken )}).catch(error =>

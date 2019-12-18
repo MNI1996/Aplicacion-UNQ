@@ -10,7 +10,7 @@ import { verifyLogIn } from '../services/ServiceBack'
 
 import * as ROUTES from '../constant/routes'
 
-import FormularioComprador, { FormularioCompradorClass }  from './FormularioComprador'
+import FormularioCompradorClass  from './FormularioComprador'
 import FormularioProveedor from './FormularioProveedor'
 
 function Home(props){
@@ -42,7 +42,7 @@ class HomeBodyBase extends Component{
   render(){
     return(
       <div>
-        <FormularioProveedor providerData={{data: this.datosUsusario.datosProvider}} history={this.history} /> 
+        <FormularioProveedor providerData={{data: this.datosUsusario.datosProvider}} firebase={this.firebase} history={this.history} palabras={this.palabras} /> 
         <FormularioCompradorClass dataComprador={{data: this.datosUsusario.datosComprador}} firebase={this.firebase} history={this.history} palabras={this.palabras} />
       </div>)}
 }
