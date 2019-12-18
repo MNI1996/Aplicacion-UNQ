@@ -14,4 +14,5 @@ export default () => {
         Ingreso: intl.formatMessage({ id: 'Ingreso', defaultMessage: 'eh ta mal' }),
         Registrar: intl.formatMessage({ id: 'Registro', defaultMessage: 'eh ta mal' }),
         Google: intl.formatMessage({ id: 'Google', defaultMessage: 'eh ta mal' }),
+        Crear: intl.formatMessage({ id: 'Crear', defaultMessage: 'eh ta mal' })
     }}
