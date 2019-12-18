@@ -10,7 +10,7 @@ import ReactPaginate from 'react-paginate'
 
 import '../css/Home.css'
 
-function MenusEnLista(props)   {
+function VenatanaDeCompra(props)   {
 
   // useEffect(() => {
   //   setMenusFiltrados(menus)
@@ -36,10 +36,10 @@ function MenusEnLista(props)   {
 
   const palabras = intl()
   
-  return ( <MenusEnListaBody palabras={palabras} /> )
+  return ( <VenatanaDeCompraBody palabras={palabras} /> )
 } 
 
-class MenusEnListaBodyBase extends Component{
+class VenatanaDeCompraBodyBase extends Component{
   constructor(props){
     super(props)
     this.palabras = props.palabras
@@ -59,25 +59,25 @@ class MenusEnListaBodyBase extends Component{
     return (<>
       <input type="text" className="inputsearch" name="busqueda" onChange={event => 
         this.handleChangeSearch(event)} placeholder={this.palabras['busqueda']} />
-      <MenusBody data={[]} />
+      <MenusEnLista data={[]} />
       <ReactPaginate pageCount={4} pageRangeDisplayed={4} marginPagesDisplayed={2} />
       </>
       )}
 }
 
-export class MenusBody extends Component {
+export class MenusEnLista extends Component {
 
   render() {
-    let MenusEnLista = this.props.data.map(function(comment, index) {
-      return <div key={index}>{comment.comment}
-      <div className='row'>
-          <img src={props.menu.url}></img>
-      </div>
-      <div className='row'>
-        <h1> {props.menu} </h1>
-        <h2>{props.menu.precio}</h2>
-        <p>{props.menu.descripcion}</p>
-      </div>
+    let MenusEnLista = this.props.data.map( (data) => {
+      return <div key={data.index}>
+        <div className='row'>
+            <img src={data.url}></img>
+        </div>
+        <div className='row'>
+          <h1>{data.menu}</h1>
+          <h2>{data.precio}</h2>
+          <p>{data.descripcion}</p>
+        </div>
       </div>
     })
 
@@ -90,9 +90,11 @@ export class MenusBody extends Component {
     )
   }
 }
-const MenusEnListaBody = injectIntl(withRouter(MenusEnListaBodyBase))
+
+const VenatanaDeCompraBody = injectIntl(withRouter(VenatanaDeCompraBodyBase))
 
 
-export default MenusEnLista
+export default VenatanaDeCompra
 
-export { MenusEnListaBody }
+
+export { VenatanaDeCompraBody }

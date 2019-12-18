@@ -13,65 +13,6 @@ import { onSearch, onSearchgeoCode } from '../services/ServiceUbicacion'
 
 import '../css/Formulario.css'
 
-function FormularioComprador(props)  {
-  const style = { background:'#ecf0f1', border: '#ccc 1px solid', 
-    'borderBottom': '#ccc 2px solid', padding: '2%', width:'250px',
-    color:'#AAAAAA', margin:'2% 0% 5% 2%', font:'1em', 'borderRadius':'4px' }
-
-  const [ dataComprador, setDataComprador ] = useState(null)
-  const [ searchUbicacion, setsearchUbicacion ] = useState('')
-  const [ ubicaciones, setUbicaciones ] = useState([])
-  const [ ubicacion, setUbicacion ] = useState(null)
-  const history = props.history
-  const palabras = intl()
-  const firebase = useFirebaseApp()
-
-
-  useEffect( () => verifyLogIn(firebase).then(response => setCompradorData(response))
-    .catch(error => history.push('/')) ,[])
-
-  const setCompradorData = ( response ) => {
-    setDataComprador({datosComprador: response.datosComprador})
-    // if(!!dataComprador.calle)  setUbicacion(jsonToDireccion(dataComprador)) 
-  }
-    
-  const verify = () => { onSearchgeoCode(searchUbicacion).then(response =>  
-    {if(response.Response.View[0].Result[0].MatchLevel == 'houseNumber')
-    setUbicacion(response.Response.View[0].Result[0].Location)}).catch()}
-    
-  const handleSubmit = async () => {
-    setDireccion(firebase, direccionTojson(ubicacion)).then(response => goto(response.clientData)).catch()}
-
-  const goto = (dataCliente) => {
-    history.push(ROUTES.MENUS)}
-
-  const busqueda = data => { setsearchUbicacion(data)
-    data.length >= 5 ? 
-    onSearch(searchUbicacion).then(response => setUbicaciones(response.suggestions)):
-    setUbicaciones([])}
-
-
-  return ( !!dataComprador ? 
-    <div className="containerFormulario">
-        <h2>{palabras['Bienvenidos']}</h2>
-        <h1>{palabras['Bienvenidos']}</h1>
-        {/* <Autocomplete
-          wrapperStyle={style}
-          getItemValue={ (item) => item.label }
-          items= { ubicaciones }
-          renderItem={(item, isHighlighted) => 
-            <div key={item.label} style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-              {item.label}
-            </div>}
-          value={ searchUbicacion }
-          shouldItemRender={ matchDireccionToTerm }
-          onChange={(event) => busqueda(event.target.value)}
-          onSelect={(value) => busqueda(value)} /> */}
-        <br/>
-        <button className="inputSubmit" onClick={verify}>{palabras['Bienvenidos']}</button>
-        <button className="inputSubmit" disabled={!ubicacion} onClick={handleSubmit}>{palabras['Bienvenidos']}</button>
-    </div> : <div></div> )} 
-
 
 function matchDireccionToTerm(direccion, value) {
   const datosDireccion = value.split(' ')
@@ -159,6 +100,5 @@ class FormularioCompradorClass extends Component {
       </div>)
   }
 }
-export { FormularioCompradorClass }
 
-export default FormularioComprador
+export default FormularioCompradorClass
