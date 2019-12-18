@@ -15,13 +15,14 @@ return(<Fragment>
 
 }
 
+
 function MenusEnLista(props)   {
 
   const palabras = intl()
   const Busqueda = palabras['Busqueda']
     
     const  [busqueda, setBusqueda] = useState('')
-    const  [menus, setMenus] = useState(props.provider.menus)
+    const  [menus, setMenus] = useState(props.provider.menus)//aca iria el mensaje a back
     const  [menusFiltrados, setMenusFiltrados] = useState([])
   
    
@@ -34,19 +35,25 @@ function MenusEnLista(props)   {
             <p>No se encontró un restaurant con ese nombre</p>
           </div>
         )}
-      return menusFiltrados1.map(menu => (<Menu key={menu} menu={menu} />))
+      return  menusFiltrados1.map(menu => (<Menu key={menu} menu={menu} />))
     } 
   
     const handleChangeSearch = (event) => {
         setMenusFiltrados(menus.filter(menu => menu.includes(event.target.value)))  
     }
-
-    return (<div>
-      <input type="text" className="inputsearch" name="busqueda" onChange={event => handleChangeSearch(event)} placeholder={Busqueda} />
+    const irACrear=()=>{useEffect( props.user ? history.push('/MakeMenu') : '' )}    
+    return (
+    <div>
+      <div>
+        <button className="inputSubmit" onClick={irACrear}>{palabras['Crear']} </button> </div>
+      <div>
+        <input type="text" className="inputsearch" name="busqueda" onChange={event => handleChangeSearch(event)} placeholder={Busqueda} />
         <ul className="listMenu">
-          { showAllMenus() }   
-        </ul></div>
-   )
+          { showAllMenus()}
+        </ul>
+      </div>
+    </div>
+   )//.map(menu => <li> {menu}</li>)  esto iria en showAllMenus()
        
   }
 
@@ -57,7 +64,7 @@ function MenusEnLista(props)   {
     const Busqueda = palabras ['Busqueda']
       
       const  [busqueda, setBusqueda ]= useState('')
-      const  [ordenes, setOrdenes] = useState(props.provider.history)
+      const  [ordenes, setOrdenes] = useState(props.provider.history)//aca iria el mensaje a back
       const  [ordenesFiltrados, setOrdenesFiltrados] = useState([])
     
     

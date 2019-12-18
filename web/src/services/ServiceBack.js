@@ -3,7 +3,7 @@ import 'firebase/auth'
 import { post } from './Service'
 
 
-const url = 'http://localhost:6009'
+const url = 'http://192.168.100.236:6009'
 
 export async function logueo(firebase, provider){
   await firebase.auth().signInWithPopup(provider)
