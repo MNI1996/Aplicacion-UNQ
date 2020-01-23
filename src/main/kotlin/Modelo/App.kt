@@ -20,6 +20,5 @@ fun main(args: Array<String>) {
 
     runApplication<App>(*args)
     FireBaseService().initialize()
-    DispacherProvider().buildUser()
 }
 

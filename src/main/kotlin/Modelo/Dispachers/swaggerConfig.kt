@@ -1,4 +1,4 @@
-package Modelo.Api
+package Modelo.Dispachers
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

@@ -4,11 +4,11 @@ import Modelo.Daos.DaoProvider
 import Modelo.Enums.Categoria
 import Modelo.Enums.DiasDeSemana
 import Modelo.Enums.Horarios
-import Modelo.Menu
-import Modelo.Promocion
-import Modelo.Provider
+import Modelo.*
 import org.joda.time.DateTime
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.context.event.ApplicationReadyEvent
+import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
 @Component
@@ -43,13 +43,13 @@ class DispacherProvider () {
             , Promocion(11,30.00),null
             ,100,true)
 
-
+    @EventListener(ApplicationReadyEvent::class)
     fun buildUser() {
+        dao.save(prov)
         prov.addMenu(menu)
         prov.addMenu(menu1)
         prov.addMenu(menu2)
         prov.addMenu(menu3)
-        dao.save(prov)
     }
 
 }
