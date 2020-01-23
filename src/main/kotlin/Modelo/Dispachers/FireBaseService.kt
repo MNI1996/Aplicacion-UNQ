@@ -25,7 +25,6 @@ class FireBaseService() {
 
     fun initialize(){
         try {
-            println(clave)
             val options = FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(ClassPathResource("/KEY_FIREBASE.json").inputStream))
                     .build()
