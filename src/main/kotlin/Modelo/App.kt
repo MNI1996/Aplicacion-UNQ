@@ -10,6 +10,7 @@ import org.joda.time.DateTime
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
+import Modelo.Dispachers.DispacherProvider
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -19,5 +20,6 @@ fun main(args: Array<String>) {
 
     runApplication<App>(*args)
     FireBaseService().initialize()
+    DispacherProvider().buildUser()
 }
 
