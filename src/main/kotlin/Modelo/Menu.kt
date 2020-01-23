@@ -42,7 +42,7 @@ class Menu (
     fun itsOver():Boolean{
         var hoy= DateTime.now()
 
-         var result= duracionMenu.isAfter(hoy)
+         var result= duracionMenu.isBefore(hoy)
        return(result)
     }
 

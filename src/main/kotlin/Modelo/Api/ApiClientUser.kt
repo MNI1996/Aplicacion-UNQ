@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/Client")
 class ApiClientUser {
+
     @Autowired
-    lateinit var Clientes: DispacherUser
+    lateinit var clientes: DispacherUser
 
     @RequestMapping("/LogUser", method = [RequestMethod.POST])
     fun LogUser(@RequestHeader("X-Firebase-ID-Token") token: String): ClientUser {
         var userToken = FireBaseService().veryfiToken(token)
         var userData = FireBaseService().getUserData(userToken.uid)
-        var user = Clientes.getDataUser(userData)
+        var user = clientes.getDataUser(userData)
         return user
     }
 
@@ -28,7 +29,7 @@ class ApiClientUser {
     fun comprador(@RequestHeader("X-Firebase-ID-Token") token: String,@RequestBody datosComprador: DatosComprador): ClientUser {
         var userData = FireBaseService().veryfiToken(token)
         var user = FireBaseService().getUserData(userData.uid)
-        var data = Clientes.setCompradorData(user,datosComprador)
+        var data = clientes.setCompradorData(user,datosComprador)
         return data
     }
 
@@ -36,7 +37,7 @@ class ApiClientUser {
     fun provider(@RequestHeader("X-Firebase-ID-Token") token: String,@RequestBody datosProvedor: Provider): ClientUser {
         var userData = FireBaseService().veryfiToken(token)
         var user = FireBaseService().getUserData(userData.uid)
-        var data = Clientes.setProvedorData(user,datosProvedor)
+        var data = clientes.setProvedorData(user,datosProvedor)
         return data
     }
 
