@@ -17,6 +17,7 @@ class Order (
         var state: String,
         var precioTotal: Double
              ) {
+    var puntuacion=0
     var code= Math.random()
     @Transient
     val geoCalculator = GeoCalculator

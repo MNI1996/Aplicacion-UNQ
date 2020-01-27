@@ -1,10 +1,12 @@
 package Modelo
 
 import Modelo.ClientUser
+import Modelo.Dispachers.DispacherEmail
 import Modelo.Menu
 import Modelo.Order
 import Modelo.Provider
 import org.joda.time.DateTime
+import org.springframework.mail.SimpleMailMessage
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 
@@ -13,6 +15,8 @@ class AppModel() {
 
     var providers=emptyList<Provider>().toMutableList()
     var clientsUsers=emptyList<ClientUser>().toMutableList()
+    var mailsQueue=emptyList<SimpleMailMessage>().toMutableList()
+    var cronometro = DateTime.now()
     var user : String=""
     var pass : String=""
 
@@ -78,10 +82,14 @@ class AppModel() {
             user.history.add(newOrder)
             provider.history.add(newOrder)
             user.saldo -= newOrder.precioTotal
+            mailsQueue.add(DispacherEmail()
+                    .buildMessage(user.mail
+                            ,"compra"
+                            ,"se ha realizado una compra a "+ provider.name+"por un monto de "+newOrder.precioTotal))
         }
         else
         {
-            throw Exception("Algo ha salido mal, revise que posea saldo suficiente y su compra")
+            throw Exception("Algo ha salido mal, revise su compra o si no tiene calificaciones pendientes")
         }
     }
 
@@ -110,5 +118,10 @@ class AppModel() {
         return listaDePrecioFinal.sum()
     }
 
+    private fun mandarMails(){
+        if (cronometro.hourOfDay().get()==0)
+        {mailsQueue.map{m ->DispacherEmail().sendMail(m)}}
+
+    }
 
 }

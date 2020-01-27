@@ -21,21 +21,24 @@ class DispacherEmail {
     val logger: Logger = LogManager.getLogger(DispacherEmail::class.java)
 
 
-    fun sendMail(to: String, subject: String, text: String) {
-        logger.info("enviando mail a " + to)
-        var message = SimpleMailMessage()
-        message.setTo(to)
-        message.setSubject(subject)
-        message.setText(text)
+    fun sendMail(message:SimpleMailMessage) {
+        logger.info("enviando mail a " + message.to)
         mailSender.send(message)
-        logger.info("se envio el mail a " + to)
+        logger.info("se envio el mail a " + message.to)
     }
 
+     fun buildMessage(to: String, subject: String, text: String):SimpleMailMessage{
+         var message = SimpleMailMessage()
+         message.setTo(to)
+         message.setSubject(subject)
+         message.setText(text)
+         return message
+     }
 
     @EventListener(ApplicationReadyEvent::class)
     fun sendMeMail() {
-        sendMail("nahuel_necroligth@yahoo.com.ar"
+        sendMail(buildMessage("nahuel_necroligth@yahoo.com.ar"
                 , "Mail de Prueba"
-                , "Probando que manda un mail como la gente")
+                , "Probando que manda un mail como la gente"))
     }
 }
