@@ -12,8 +12,8 @@ fun getJavaMailSender(): JavaMailSender? {
     val mailSender = JavaMailSenderImpl()
     mailSender.host = "smtp.gmail.com"
     mailSender.port = 587
-    mailSender.username = "gmail@gmail.com"
-    mailSender.password = "clave"
+    mailSender.username = "pruebafirebase12345@gmail.com"
+    mailSender.password = "1122Clav"
     val props: Properties = mailSender.javaMailProperties
     props.put("mail.transport.protocol", "smtp")
     props.put("mail.smtp.auth", "true")
